@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DustVault — Reclaim Your Money</title>
+<meta name="description" content="DustVault Technologies recovers billions in dormant prepaid card balances. Veteran-owned fintech. 10% of every recovery goes to Veterans and those in need.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +18,8 @@
     --gray: #1a1a1a;
     --gray-mid: #2e2e2e;
     --text-muted: #888;
+    --green: #2a6b3a;
+    --red: #8b1a1a;
   }
 
   html { scroll-behavior: smooth; }
@@ -35,7 +38,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.25rem 2.5rem;
-    background: rgba(10,10,10,0.85);
+    background: rgba(10,10,10,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201,168,76,0.12);
   }
@@ -45,6 +48,12 @@
     color: var(--gold); letter-spacing: -0.02em;
   }
   .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
   .nav-cta {
     background: var(--gold); color: var(--black);
     border: none; padding: 0.6rem 1.4rem;
@@ -55,6 +64,7 @@
     transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--gold-light); }
+  @media(max-width:600px){.nav-links{display:none;}}
 
   /* HERO */
   .hero {
@@ -99,10 +109,7 @@
     margin-bottom: 1.5rem;
     animation: fadeUp 0.6s 0.1s ease both;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--gold);
-  }
+  h1 em { font-style: normal; color: var(--gold); }
   .hero-sub {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: var(--text-muted);
@@ -148,7 +155,6 @@
     gap: 0; flex-wrap: wrap;
     border-top: 1px solid rgba(255,255,255,0.06);
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    margin: 0;
   }
   .stat {
     flex: 1; min-width: 200px;
@@ -163,6 +169,32 @@
     margin-bottom: 0.4rem;
   }
   .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* TRACTION BANNER */
+  .traction-bar {
+    background: rgba(201,168,76,0.07);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+  .traction-bar-label {
+    font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .traction-items {
+    display: flex; justify-content: center;
+    flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  }
+  .traction-item {
+    font-size: 0.78rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .traction-item::before {
+    content: '✓';
+    color: var(--gold); font-weight: 700; font-size: 0.75rem;
+  }
 
   /* HOW IT WORKS */
   .section {
@@ -191,7 +223,6 @@
   .step {
     background: var(--black);
     padding: 2.5rem 2rem;
-    position: relative;
   }
   .step-num {
     font-family: 'Syne', sans-serif;
@@ -235,6 +266,135 @@
   }
   .problem-card-text { font-size: 0.85rem; color: var(--text-muted); }
 
+  /* B2B / PARTNERS SECTION */
+  .partners-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .partners-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: 3rem;
+  }
+  .partner-card {
+    background: var(--black);
+    padding: 2rem;
+  }
+  .partner-card-icon {
+    font-size: 1.5rem; margin-bottom: 1rem;
+  }
+  .partner-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    margin-bottom: 0.5rem; color: var(--white);
+  }
+  .partner-card-desc {
+    font-size: 0.85rem; color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .partner-cta-row {
+    margin-top: 3rem;
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .btn-gold {
+    background: var(--gold); color: var(--black);
+    border: none; padding: 0.9rem 2rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+    border-radius: 2px;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent; color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.9rem 2rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.08); }
+
+  /* REGULATORY / WHY NOW */
+  .why-now {
+    background: var(--gray);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .why-now-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 6rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start;
+  }
+  @media(max-width:700px){.why-now-inner{grid-template-columns:1fr;gap:2rem;}}
+  .why-points { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem; }
+  .why-point {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .why-point-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.2rem;
+    color: var(--gold); min-width: 28px;
+    line-height: 1.4;
+  }
+  .why-point-text { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+  .why-point-text strong { color: var(--white); }
+
+  /* TRACTION SECTION */
+  .traction-section {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .traction-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: 3rem;
+  }
+  .traction-card {
+    background: var(--black);
+    padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .traction-card-status {
+    font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+  .traction-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--white);
+  }
+  .traction-card-desc {
+    font-size: 0.8rem; color: var(--text-muted);
+    line-height: 1.6;
+  }
+
   /* MISSION */
   .mission {
     background: var(--gold);
@@ -274,8 +434,7 @@
     font-family: 'Syne', sans-serif;
     font-size: clamp(1.3rem, 3vw, 2rem);
     font-weight: 700; line-height: 1.3;
-    margin-bottom: 2rem;
-    color: var(--white);
+    margin-bottom: 2rem; color: var(--white);
   }
   .founder-quote em { color: var(--gold); font-style: normal; }
   .founder-name {
@@ -290,6 +449,7 @@
     padding: 2rem 2.5rem;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
+    background: var(--black);
   }
   .footer-logo {
     font-family: 'Syne', sans-serif;
@@ -327,13 +487,20 @@
 
 <nav>
   <div class="nav-logo">Dust<span>Vault</span></div>
+  <div class="nav-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#partners">For Partners</a>
+    <a href="#traction">Traction</a>
+    <a href="mailto:dustvaulthq@gmail.com">Contact</a>
+  </div>
   <a href="#waitlist" class="nav-cta">Join Waitlist</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Veteran-Owned Fintech · Coming 2026</div>
+  <div class="hero-badge">Veteran-Owned Fintech · Piscataway, NJ · Est. 2026</div>
   <h1>Your leftover<br><em>card money</em><br>belongs to you.</h1>
-  <p class="hero-sub">Prepaid card companies profit from your forgotten $1.47. DustVault sweeps every leftover balance into one wallet — so you keep every dollar you paid for.</p>
+  <p class="hero-sub">$70 billion in unclaimed property sits forgotten across America. DustVault's AI platform finds it, recovers it, and returns it — with 10% going to Veterans and those in need.</p>
   <div class="hero-form" id="waitlist">
     <input type="email" id="email-input" placeholder="your@email.com" />
     <button onclick="joinWaitlist()">Claim My Spot</button>
@@ -342,26 +509,41 @@
   <p class="success-msg" id="success-msg">✓ You're on the list. We'll be in touch soon.</p>
 </section>
 
+<!-- STATS -->
 <div class="stats">
   <div class="stat reveal">
-    <div class="stat-num">$3B+</div>
-    <div class="stat-label">Lost to card breakage yearly</div>
+    <div class="stat-num">$70B+</div>
+    <div class="stat-label">Unclaimed property held by states</div>
   </div>
   <div class="stat reveal">
-    <div class="stat-num">6 in 10</div>
-    <div class="stat-label">Cards have leftover balances</div>
+    <div class="stat-num">1 in 7</div>
+    <div class="stat-label">Americans have unclaimed funds</div>
   </div>
   <div class="stat reveal">
-    <div class="stat-num">15</div>
-    <div class="stat-label">States have cash-back laws</div>
+    <div class="stat-num">$4.49B</div>
+    <div class="stat-label">Returned to owners in FY2024 — record high</div>
   </div>
   <div class="stat reveal">
     <div class="stat-num">10%</div>
-    <div class="stat-label">Of fees go to veteran charities</div>
+    <div class="stat-label">Of every recovery goes to Veterans & homeless</div>
   </div>
 </div>
 
-<section class="section">
+<!-- TRACTION BAR -->
+<div class="traction-bar reveal">
+  <div class="traction-bar-label">Live Momentum — May 2026</div>
+  <div class="traction-items">
+    <span class="traction-item">NJEDA Founders & Funders — June 18 Confirmed</span>
+    <span class="traction-item">Plug & Play Accelerator — Submitted</span>
+    <span class="traction-item">WEX Inc — Partnership Outreach Active</span>
+    <span class="traction-item">7 Major Issuers Contacted</span>
+    <span class="traction-item">Verizon LISC Grant — Active</span>
+    <span class="traction-item">SCORE Mentor — Active</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
   <p class="section-tag reveal">How it works</p>
   <h2 class="section-title reveal">Three steps to<br>reclaim your dust.</h2>
   <div class="steps">
@@ -383,12 +565,13 @@
   </div>
 </section>
 
+<!-- PROBLEM -->
 <div class="problem-section">
   <div class="problem-inner">
     <div class="reveal">
       <p class="section-tag">The real problem</p>
-      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1.5rem">They call it "breakage." We call it yours.</h2>
-      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.8">Card companies budget for the money you never use. It goes straight to their bottom line. Federal law says your card must be valid 5 years — but they know you'll forget long before that.</p>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1.5rem">They call it "breakage."<br>We call it yours.</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.8">Card companies budget for the money you never use. It goes straight to their bottom line. Federal law says your card must be valid 5 years — but they know you'll forget long before that. Only 5% of outstanding unclaimed property is claimed each year. DustVault changes that math.</p>
     </div>
     <div class="problem-cards reveal">
       <div class="problem-card">
@@ -411,15 +594,123 @@
   </div>
 </div>
 
+<!-- WHY NOW — REGULATORY TAILWIND -->
+<div class="why-now">
+  <div class="why-now-inner">
+    <div class="reveal">
+      <p class="section-tag">Why now</p>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem">The regulatory window<br>is open. Right now.</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem">Issuers are under increasing pressure from the CFPB and state attorneys general to address dormant balances. The time to build this infrastructure is now — before enforcement makes it mandatory.</p>
+      <a href="mailto:dustvaulthq@gmail.com" class="btn-gold">Talk to Us</a>
+    </div>
+    <div class="why-points reveal">
+      <div class="why-point">
+        <div class="why-point-num">01</div>
+        <div class="why-point-text"><strong>CFPB Scrutiny Intensifying.</strong> The Consumer Financial Protection Bureau is actively monitoring dormant balance practices across prepaid card issuers.</div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">02</div>
+        <div class="why-point-text"><strong>All 50 States Have Escheatment Laws.</strong> Every state requires issuers to report and remit dormant balances — compliance is not optional, and enforcement is growing.</div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">03</div>
+        <div class="why-point-text"><strong>Only 5% Gets Claimed Annually.</strong> States returned a record $4.49B in FY2024 — but the vast majority of unclaimed funds never reach their owners.</div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">04</div>
+        <div class="why-point-text"><strong>No Purpose-Built Solution Exists.</strong> DustVault is the first AI platform designed specifically for prepaid card dormant balance recovery at the issuer level.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR PARTNERS / B2B -->
+<div class="partners-section" id="partners">
+  <div class="partners-inner">
+    <p class="section-tag reveal">For Issuers & Investors</p>
+    <h2 class="section-title reveal" style="margin-bottom:0.5rem">Built for the companies<br>that hold the balances.</h2>
+    <p class="reveal" style="color:var(--text-muted);font-size:1rem;max-width:600px;margin-bottom:0">DustVault partners directly with prepaid card issuers to identify, recover, and reconcile dormant balances at scale — with zero upfront cost and a performance-based fee model.</p>
+    <div class="partners-grid">
+      <div class="partner-card reveal">
+        <div class="partner-card-icon">🤖</div>
+        <div class="partner-card-title">AI Recovery Engine</div>
+        <div class="partner-card-desc">Analyzes your card portfolio to identify dormant balances, prioritize recovery candidates, and automate compliant outreach — all without manual intervention.</div>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-card-icon">📊</div>
+        <div class="partner-card-title">Compliance Dashboard</div>
+        <div class="partner-card-desc">Real-time reporting on dormant inventory, recovery rates, and regulatory deadlines. Built to satisfy CFPB and state AG requirements from day one.</div>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-card-icon">💰</div>
+        <div class="partner-card-title">Performance-Based Pricing</div>
+        <div class="partner-card-desc">No recovery, no fee. Zero financial risk for the issuer. DustVault earns only when your cardholders get their money back. Everyone wins.</div>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-card-icon">🎖️</div>
+        <div class="partner-card-title">Mission That Matters</div>
+        <div class="partner-card-desc">10% of every recovery goes directly to Veterans and people experiencing homelessness. Written into our operating agreement. Non-negotiable.</div>
+      </div>
+    </div>
+    <div class="partner-cta-row reveal">
+      <a href="mailto:dustvaulthq@gmail.com" class="btn-gold">Partner With DustVault</a>
+      <a href="mailto:dustvaulthq@gmail.com" class="btn-outline">Investor Inquiries</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRACTION SECTION -->
+<div class="traction-section" id="traction">
+  <div class="traction-inner">
+    <p class="section-tag reveal">Traction</p>
+    <h2 class="section-title reveal" style="margin-bottom:0.5rem">Three weeks in.<br>Already moving.</h2>
+    <p class="reveal" style="color:var(--text-muted);font-size:1rem;max-width:560px">DustVault incorporated May 1, 2026. Here's what we've built since.</p>
+    <div class="traction-grid">
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Confirmed</div>
+        <div class="traction-card-title">NJEDA Founders & Funders</div>
+        <div class="traction-card-desc">Pitch slot confirmed — June 18, 2026. New Jersey's premier startup funding event.</div>
+      </div>
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Submitted</div>
+        <div class="traction-card-title">Plug & Play Accelerator</div>
+        <div class="traction-card-desc">Application submitted to one of the world's most active startup accelerators.</div>
+      </div>
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Active</div>
+        <div class="traction-card-title">7 Major Issuer Outreaches</div>
+        <div class="traction-card-desc">Partnership outreach sent to Green Dot, NetSpend, WEX, Blackhawk, InComm, Conduent, and Comdata.</div>
+      </div>
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Active</div>
+        <div class="traction-card-title">Verizon LISC Grant</div>
+        <div class="traction-card-desc">Grant #1095158-1 active. Pursuing non-dilutive capital from day one.</div>
+      </div>
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Live</div>
+        <div class="traction-card-title">AI Automation System</div>
+        <div class="traction-card-desc">Live grant-finding, partner outreach, and competitor intelligence running on autopilot since launch.</div>
+      </div>
+      <div class="traction-card reveal">
+        <div class="traction-card-status">✅ Active</div>
+        <div class="traction-card-title">SCORE Mentorship</div>
+        <div class="traction-card-desc">Working with SCORE mentor Bruce Smith on business strategy and network development.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
 <div class="mission">
   <h2>Built by a US Navy Veteran.<br>For every American leaving money behind.</h2>
-  <p>10% of every DustVault transaction goes directly to veteran and homeless charities. Your spare change becomes someone's lifeline.</p>
+  <p>10% of every DustVault recovery goes directly to Veterans and those experiencing homelessness. Your forgotten balance becomes someone's lifeline.</p>
   <a href="#waitlist" class="mission-cta">Join the Mission</a>
 </div>
 
+<!-- FOUNDER -->
 <div class="founder">
-  <p class="founder-quote reveal">"I had 6 prepaid cards in my drawer with money I couldn't use. <em>I was the first DustVault customer.</em> Now I'm building the app so no one has to feel that way again."</p>
-  <p class="founder-name reveal"><strong>Keval Bhatt</strong> · Founder & CEO, DustVault Technologies · US Navy Veteran</p>
+  <p class="founder-quote reveal">"I had 6 prepaid cards in my drawer with money I couldn't use. <em>I was the first DustVault customer.</em> Now I'm building the platform so no one has to feel that way again."</p>
+  <p class="founder-name reveal"><strong>Keval Bhatt</strong> · Founder & CEO, DustVault Technologies · US Navy FMF Corpsman Veteran · Piscataway, NJ</p>
 </div>
 
 <footer>
@@ -429,19 +720,18 @@
     <a href="https://instagram.com/dustvaulthq">Instagram</a>
     <a href="https://tiktok.com/@dustvaulthq">TikTok</a>
     <a href="https://x.com/dustvaulthq">X</a>
+    <a href="mailto:dustvaulthq@gmail.com">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 DustVault Technologies · Veteran-Owned · Newark, NJ</div>
+  <div class="footer-copy">© 2026 DustVault Technologies LLC · Veteran-Owned · Piscataway, NJ</div>
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(r => obs.observe(r));
 
-  // Waitlist form
   function joinWaitlist() {
     const email = document.getElementById('email-input').value;
     const msg = document.getElementById('success-msg');
@@ -451,13 +741,11 @@
     }
     msg.classList.add('show');
     document.getElementById('email-input').value = '';
-    // Store locally for now
     const list = JSON.parse(localStorage.getItem('waitlist') || '[]');
     list.push({ email, date: new Date().toISOString() });
     localStorage.setItem('waitlist', JSON.stringify(list));
   }
 
-  // Enter key on email
   document.getElementById('email-input').addEventListener('keydown', function(e) {
     if(e.key === 'Enter') joinWaitlist();
   });
