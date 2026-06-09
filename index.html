@@ -11,15 +11,16 @@
 
     <style>
         :root {
+            /* Premium Brand Identity Palette */
             --vault-cyan: #00E5FF;
-            --vault-glow: rgba(0, 229, 255, 0.2);
-            --vault-dark-metal: #1A252C;
-            --bg-midnight: #060A09;
-            --card-onyx: #0E1417;
+            --vault-glow: rgba(0, 229, 255, 0.25);
+            --vault-dark-metal: #111B21;
+            --bg-midnight: #060A0C;
+            --card-onyx: #0D151A;
             --text-pure: #FFFFFF;
-            --text-platinum: #CFD8DC;
-            --text-muted: #78909C;
-            --border-steel: #263238;
+            --text-platinum: #E0E6ED;
+            --text-muted: #6C7D88;
+            --border-steel: #1E2D35;
             --success-glow: #00E676;
         }
 
@@ -47,10 +48,10 @@
 
         /* Top Enterprise Navigation */
         nav {
-            background-color: rgba(14, 20, 23, 0.85);
+            background-color: rgba(13, 21, 26, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-steel);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -93,17 +94,17 @@
         /* Hero Framework */
         .hero {
             text-align: center;
-            padding: 7rem 1.5rem 5rem 1.5rem;
+            padding: 8rem 1.5rem 6rem 1.5rem;
             background: linear-gradient(180deg, var(--vault-dark-metal) 0%, var(--bg-midnight) 100%);
             border-bottom: 1px solid var(--border-steel);
         }
 
         .mission-badge {
-            background: rgba(0, 229, 255, 0.08);
-            border: 1px solid var(--vault-cyan);
+            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(0, 229, 255, 0.4);
             color: var(--vault-cyan);
             padding: 0.8rem 1.6rem;
-            border-radius: 50px;
+            border-radius: 4px;
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
@@ -112,7 +113,6 @@
             font-size: 0.95rem;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
         }
 
         .hero h1 {
@@ -125,7 +125,7 @@
 
         .hero h1 span {
             color: var(--vault-cyan);
-            text-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
         }
 
         .hero p {
@@ -135,28 +135,28 @@
             margin: 0 auto 3rem auto;
         }
 
-        /* Professional Action Button Architecture */
+        /* Interactive Custom Buttons */
         .btn-action {
             background-color: var(--vault-cyan);
-            color: #060A09;
+            color: #060A0C;
             border: none;
             padding: 1.1rem 2.2rem;
             font-size: 1rem;
             font-weight: 700;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.35);
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.25);
         }
 
         .btn-action:hover {
             transform: translateY(-2px);
-            background-color: #80F4FF;
-            box-shadow: 0 6px 25px rgba(0, 229, 255, 0.5);
+            background-color: #66F0FF;
+            box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4);
         }
 
         .btn-action:disabled {
@@ -174,7 +174,7 @@
             padding: 1.1rem 2.2rem;
             font-size: 1rem;
             font-weight: 600;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-flex;
@@ -185,12 +185,11 @@
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.04);
+            background-color: rgba(255, 255, 255, 0.03);
             border-color: var(--vault-cyan);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
         }
 
-        /* Main Container Layout Shell */
+        /* Container Layout Shell */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -213,7 +212,7 @@
             font-size: 1.15rem;
         }
 
-        /* Core Presentation Grid */
+        /* Core Features Grid Layout */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -224,7 +223,7 @@
         .feature-card {
             background-color: var(--card-onyx);
             border: 1px solid var(--border-steel);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 2.5rem;
             transition: all 0.3s ease;
         }
@@ -239,7 +238,6 @@
             font-size: 2.2rem;
             color: var(--vault-cyan);
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
         }
 
         .feature-card h3 {
@@ -253,14 +251,14 @@
             font-size: 0.98rem;
         }
 
-        /* Professional System Sandbox Control Deck Section */
+        /* Custom System Sandbox Dashboard Section */
         .dashboard-wrapper {
             background-color: var(--card-onyx);
             border: 1px solid var(--border-steel);
-            border-radius: 12px;
+            border-radius: 6px;
             padding: 3rem;
             margin: 5rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .metrics-grid {
@@ -271,9 +269,9 @@
         }
 
         .metric-card {
-            background-color: #05080A;
+            background-color: #080D10;
             border: 1px solid var(--border-steel);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 1.5rem;
         }
 
@@ -309,9 +307,9 @@
         }
 
         .scan-box {
-            background: rgba(0, 229, 255, 0.03);
-            border: 1px dashed var(--vault-cyan);
-            border-radius: 8px;
+            background: rgba(0, 229, 255, 0.02);
+            border: 1px dashed var(--border-steel);
+            border-radius: 4px;
             padding: 2.5rem;
             text-align: center;
             margin-bottom: 2rem;
@@ -323,7 +321,7 @@
         }
 
         .progress-bar {
-            background-color: #05080A;
+            background-color: #080D10;
             height: 8px;
             border-radius: 4px;
             width: 100%;
@@ -337,18 +335,16 @@
             height: 100%;
             width: 0%;
             transition: width 0.1s linear;
-            box-shadow: 0 0 10px var(--vault-cyan);
         }
 
         .terminal-box {
-            background-color: #030506;
+            background-color: #040709;
             border: 1px solid var(--border-steel);
-            border-radius: 6px;
+            border-radius: 4px;
             padding: 1.25rem;
             height: 280px;
             overflow-y: auto;
             font-size: 0.88rem;
-            box-shadow: inset 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .terminal-row { display: flex; gap: 0.6rem; margin-bottom: 0.5rem; }
@@ -369,7 +365,7 @@
             border-bottom: 1px solid var(--border-steel);
         }
 
-        th { color: var(--text-muted); background: rgba(255, 255, 255, 0.02); font-weight: 600; }
+        th { color: var(--text-muted); background: rgba(255, 255, 255, 0.01); font-weight: 600; }
 
         .status-pill {
             display: inline-block;
@@ -378,10 +374,10 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-        .status-pill.dormant { background: rgba(120, 144, 156, 0.15); color: var(--text-platinum); }
-        .status-pill.recovered { background: rgba(0, 230, 118, 0.1); color: var(--success-glow); border: 1px solid rgba(0, 230, 118, 0.3); }
+        .status-pill.dormant { background: rgba(108, 125, 136, 0.15); color: var(--text-platinum); }
+        .status-pill.recovered { background: rgba(0, 230, 118, 0.1); color: var(--success-glow); border: 1px solid rgba(0, 230, 118, 0.2); }
 
-        /* Split-Column Value Prop Section */
+        /* Split-Column Framework Spec Section */
         .split-section {
             display: grid;
             grid-template-columns: 1fr;
@@ -396,14 +392,13 @@
         .bullet-list li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--text-platinum); }
         .bullet-list li i { color: var(--vault-cyan); margin-top: 0.25rem; }
 
-        /* Founder Section Frame */
+        /* Founder Callout Profile */
         .founder-box {
             background: linear-gradient(135deg, var(--vault-dark-metal) 0%, var(--card-onyx) 100%);
             border: 1px solid var(--border-steel);
-            border-radius: 12px;
+            border-radius: 6px;
             padding: 4rem;
             margin-top: 5rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .founder-grid {
@@ -418,8 +413,8 @@
             font-size: 4.5rem;
             color: var(--vault-cyan);
             text-align: center;
-            background: rgba(0, 229, 255, 0.05);
-            border: 2px dashed var(--vault-cyan);
+            background: rgba(0, 229, 255, 0.03);
+            border: 2px dashed var(--border-steel);
             border-radius: 50%;
             width: 140px;
             height: 140px;
@@ -427,18 +422,17 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
         }
 
         .founder-info h3 { font-size: 1.85rem; margin-bottom: 0.3rem; letter-spacing: -0.5px; }
         .founder-info .title { font-family: 'IBM Plex Mono', monospace; color: var(--vault-cyan); margin-bottom: 1.5rem; font-size: 0.98rem; font-weight: 600; }
         .founder-quote { font-size: 1.1rem; line-height: 1.7; color: var(--text-pure); font-style: italic; }
 
-        /* Footer Hub Links Box */
+        /* Footer Hub Action Frame */
         .cta-frame {
-            background: linear-gradient(180deg, var(--card-onyx) 0%, rgba(26, 37, 44, 0.3) 100%);
+            background: linear-gradient(180deg, var(--card-onyx) 0%, rgba(17, 27, 33, 0.4) 100%);
             border: 1px solid var(--border-steel);
-            border-radius: 12px;
+            border-radius: 6px;
             padding: 5rem 2rem;
             text-align: center;
             display: flex;
@@ -457,7 +451,7 @@
             font-size: 0.88rem;
             border-top: 1px solid var(--border-steel);
             margin-top: 7rem;
-            background-color: #040607;
+            background-color: #040608;
         }
 
         footer .vet-tag {
@@ -467,7 +461,6 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 0.8rem;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
         }
     </style>
 </head>
@@ -477,7 +470,7 @@
         <div class="logo"><i class="fa-solid fa-shield-halved" style="color: var(--vault-cyan);"></i> DUST<span>VAULT</span></div>
         <div class="nav-links">
             <a href="https://linktr.ee/dustvaulthq" target="_blank"><i class="fa-solid fa-link"></i> Access Hub</a>
-            <a href="https://linktr.ee/dustvaulthq" target="_blank" class="btn-action" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; box-shadow: none;">Launch Core</a>
+            <a href="https://linktr.ee/dustvaulthq" target="_blank" class="btn-action" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; box-shadow: none; border-radius: 4px;">Launch Core</a>
         </div>
     </nav>
 
@@ -611,10 +604,10 @@
                     <li><i class="fa-solid fa-circle-check"></i> <span>Automated ledger validation pipelines reducing manual review times</span></li>
                 </ul>
             </div>
-            <div class="split-text" style="background-color: var(--card-onyx); padding: 2.5rem; border-radius: 8px; border: 1px solid var(--border-steel);">
+            <div class="split-text" style="background-color: var(--card-onyx); padding: 2.5rem; border-radius: 4px; border: 1px solid var(--border-steel);">
                 <h4 class="mono" style="color: var(--vault-cyan); margin-bottom: 1rem;"><i class="fa-solid fa-code-branch"></i> Current Architecture Blueprint</h4>
                 <p style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-platinum);">Platform configuration built for zero overhead utilizing static hosting strategies.</p>
-                <div class="mono" style="font-size: 0.85rem; color: var(--text-platinum); background: #030506; padding: 1.25rem; border-radius: 4px; border: 1px solid var(--border-steel);">
+                <div class="mono" style="font-size: 0.85rem; color: var(--text-platinum); background: #040709; padding: 1.25rem; border-radius: 4px; border: 1px solid var(--border-steel);">
                     $ npm run initialize-dustvault<br>
                     > Tracking parameters validated... OK<br>
                     > Setting enterprise security layer... ACTIVE<br>
