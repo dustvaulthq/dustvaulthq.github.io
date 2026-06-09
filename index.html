@@ -1,754 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DustVault — Reclaim Your Money</title>
-<meta name="description" content="DustVault Technologies recovers billions in dormant prepaid card balances. Veteran-owned fintech. 10% of every recovery goes to Veterans and those in need.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DustVault Technologies | Interactive B2B Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f3ee;
-    --gold: #c9a84c;
-    --gold-light: #e8c96a;
-    --gray: #1a1a1a;
-    --gray-mid: #2e2e2e;
-    --text-muted: #888;
-    --green: #2a6b3a;
-    --red: #8b1a1a;
-  }
+    <style>
+        :root {
+            --vault-green: #0D5C3A;
+            --vault-dark: #073320;
+            --electric-lime: #C8FF3E;
+            --bg-dark: #0A0F0D;
+            --card-bg: #111815;
+            --text-light: #F4F6F5;
+            --text-muted: #8A9590;
+            --border-color: #1A2621;
+            --success: #00E676;
+        }
 
-  html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 2.5rem;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.12);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.4rem;
-    color: var(--gold); letter-spacing: -0.02em;
-  }
-  .nav-logo span { color: var(--white); }
-  .nav-links { display: flex; align-items: center; gap: 2rem; }
-  .nav-links a {
-    color: var(--text-muted); text-decoration: none;
-    font-size: 0.85rem; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold); color: var(--black);
-    border: none; padding: 0.6rem 1.4rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500; font-size: 0.875rem;
-    border-radius: 2px; cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
-  @media(max-width:600px){.nav-links{display:none;}}
+        code, .mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.25);
-    color: var(--gold); font-size: 0.75rem;
-    font-weight: 500; letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem; border-radius: 2px;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-badge::before {
-    content: ''; width: 6px; height: 6px;
-    background: var(--gold); border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        /* Top Enterprise Banner Navigation */
+        nav {
+            background-color: rgba(17, 24, 21, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.8rem, 8vw, 6rem);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  h1 em { font-style: normal; color: var(--gold); }
-  .hero-sub {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: var(--text-muted);
-    max-width: 520px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-form {
-    display: flex; gap: 0;
-    max-width: 440px; width: 100%;
-    margin: 0 auto 1rem;
-    animation: fadeUp 0.6s 0.3s ease both;
-    border: 1px solid rgba(201,168,76,0.3);
-  }
-  .hero-form input {
-    flex: 1; padding: 0.9rem 1.25rem;
-    background: rgba(255,255,255,0.04);
-    border: none; outline: none;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-  }
-  .hero-form input::placeholder { color: #555; }
-  .hero-form button {
-    background: var(--gold); color: var(--black);
-    border: none; padding: 0.9rem 1.5rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    cursor: pointer; white-space: nowrap;
-    transition: background 0.2s;
-  }
-  .hero-form button:hover { background: var(--gold-light); }
-  .hero-note {
-    font-size: 0.75rem; color: #555;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.5px;
+        }
 
-  /* STATS */
-  .stats {
-    display: flex; justify-content: center;
-    gap: 0; flex-wrap: wrap;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .stat {
-    flex: 1; min-width: 200px;
-    padding: 2.5rem 2rem; text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.06);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.5rem; font-weight: 800;
-    color: var(--gold); line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+        .logo span {
+            color: var(--electric-lime);
+        }
 
-  /* TRACTION BANNER */
-  .traction-bar {
-    background: rgba(201,168,76,0.07);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    padding: 1.25rem 2rem;
-    text-align: center;
-  }
-  .traction-bar-label {
-    font-size: 0.65rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--gold); margin-bottom: 0.75rem;
-  }
-  .traction-items {
-    display: flex; justify-content: center;
-    flex-wrap: wrap; gap: 0.5rem 1.5rem;
-  }
-  .traction-item {
-    font-size: 0.78rem; color: var(--text-muted);
-    display: flex; align-items: center; gap: 0.4rem;
-  }
-  .traction-item::before {
-    content: '✓';
-    color: var(--gold); font-weight: 700; font-size: 0.75rem;
-  }
+        .badge {
+            background: rgba(200, 255, 62, 0.1);
+            border: 1px solid var(--electric-lime);
+            color: var(--electric-lime);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
 
-  /* HOW IT WORKS */
-  .section {
-    max-width: 1100px; margin: 0 auto;
-    padding: 6rem 2rem;
-  }
-  .section-tag {
-    font-size: 0.7rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--gold); margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800; line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 4rem;
-  }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .step {
-    background: var(--black);
-    padding: 2.5rem 2rem;
-  }
-  .step-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 4rem; font-weight: 800;
-    color: rgba(201,168,76,0.12);
-    line-height: 1; margin-bottom: 1rem;
-  }
-  .step-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem; font-weight: 700;
-    margin-bottom: 0.6rem;
-  }
-  .step-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+        /* Main Container layout */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
 
-  /* PROBLEM */
-  .problem-section {
-    background: var(--gray);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .problem-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 6rem 2rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-    align-items: center;
-  }
-  @media (max-width: 700px) {
-    .problem-inner { grid-template-columns: 1fr; gap: 2rem; }
-  }
-  .problem-cards { display: flex; flex-direction: column; gap: 1rem; }
-  .problem-card {
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .problem-amount {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.5rem; font-weight: 800;
-    color: var(--gold); min-width: 70px;
-  }
-  .problem-card-text { font-size: 0.85rem; color: var(--text-muted); }
+        /* Header Summary Block */
+        .demo-header {
+            background: linear-gradient(135deg, var(--vault-dark) 0%, var(--card-bg) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-  /* B2B / PARTNERS SECTION */
-  .partners-section {
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .partners-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 6rem 2rem;
-  }
-  .partners-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.06);
-    margin-top: 3rem;
-  }
-  .partner-card {
-    background: var(--black);
-    padding: 2rem;
-  }
-  .partner-card-icon {
-    font-size: 1.5rem; margin-bottom: 1rem;
-  }
-  .partner-card-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 1rem;
-    margin-bottom: 0.5rem; color: var(--white);
-  }
-  .partner-card-desc {
-    font-size: 0.85rem; color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .partner-cta-row {
-    margin-top: 3rem;
-    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-  }
-  .btn-gold {
-    background: var(--gold); color: var(--black);
-    border: none; padding: 0.9rem 2rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-    border-radius: 2px;
-  }
-  .btn-gold:hover { background: var(--gold-light); }
-  .btn-outline {
-    background: transparent; color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.4);
-    padding: 0.9rem 2rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s;
-    border-radius: 2px;
-  }
-  .btn-outline:hover { background: rgba(201,168,76,0.08); }
+        .demo-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
 
-  /* REGULATORY / WHY NOW */
-  .why-now {
-    background: var(--gray);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .why-now-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 6rem 2rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-    align-items: start;
-  }
-  @media(max-width:700px){.why-now-inner{grid-template-columns:1fr;gap:2rem;}}
-  .why-points { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem; }
-  .why-point {
-    display: flex; gap: 1rem; align-items: flex-start;
-    padding: 1.25rem;
-    background: rgba(201,168,76,0.04);
-    border: 1px solid rgba(201,168,76,0.1);
-  }
-  .why-point-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.2rem;
-    color: var(--gold); min-width: 28px;
-    line-height: 1.4;
-  }
-  .why-point-text { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
-  .why-point-text strong { color: var(--white); }
+        .demo-header p {
+            color: var(--text-muted);
+            max-width: 800px;
+        }
 
-  /* TRACTION SECTION */
-  .traction-section {
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .traction-inner {
-    max-width: 1100px; margin: 0 auto;
-    padding: 6rem 2rem;
-  }
-  .traction-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.06);
-    margin-top: 3rem;
-  }
-  .traction-card {
-    background: var(--black);
-    padding: 1.75rem;
-    display: flex; flex-direction: column; gap: 0.4rem;
-  }
-  .traction-card-status {
-    font-size: 0.65rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--gold);
-  }
-  .traction-card-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.95rem;
-    color: var(--white);
-  }
-  .traction-card-desc {
-    font-size: 0.8rem; color: var(--text-muted);
-    line-height: 1.6;
-  }
+        /* Key Metrics Row */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
 
-  /* MISSION */
-  .mission {
-    background: var(--gold);
-    padding: 5rem 2rem;
-    text-align: center;
-  }
-  .mission h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 800; color: var(--black);
-    line-height: 1.1; letter-spacing: -0.02em;
-    max-width: 700px; margin: 0 auto 1.5rem;
-  }
-  .mission p {
-    color: rgba(10,10,10,0.65);
-    max-width: 500px; margin: 0 auto 2.5rem;
-    font-size: 1rem;
-  }
-  .mission-cta {
-    background: var(--black); color: var(--gold);
-    border: none; padding: 1rem 2.5rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    display: inline-block;
-    transition: opacity 0.2s;
-  }
-  .mission-cta:hover { opacity: 0.85; }
+        .metric-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+        }
 
-  /* FOUNDER */
-  .founder {
-    max-width: 800px; margin: 0 auto;
-    padding: 6rem 2rem; text-align: center;
-  }
-  .founder-quote {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    font-weight: 700; line-height: 1.3;
-    margin-bottom: 2rem; color: var(--white);
-  }
-  .founder-quote em { color: var(--gold); font-style: normal; }
-  .founder-name {
-    font-size: 0.85rem; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 0.1em;
-  }
-  .founder-name strong { color: var(--gold); }
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 2rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-    background: var(--black);
-  }
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; color: var(--gold); font-size: 1rem;
-  }
-  .footer-links { display: flex; gap: 2rem; }
-  .footer-links a {
-    color: var(--text-muted); text-decoration: none;
-    font-size: 0.8rem; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 0.75rem; color: #444; }
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
+        .metric-value.highlight {
+            color: var(--electric-lime);
+        }
 
-  /* SUCCESS */
-  .success-msg {
-    display: none; color: var(--gold);
-    font-size: 0.85rem; margin-top: 0.75rem;
-    font-weight: 500;
-  }
-  .success-msg.show { display: block; }
-</style>
+        /* Workspace Grid Split */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .workspace-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+        }
+
+        /* Card Component Settings */
+        .panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        /* Interactive Scan Core Engine UX */
+        .scan-trigger-box {
+            background: rgba(13, 92, 58, 0.1);
+            border: 1px dashed var(--vault-green);
+            border-radius: 6px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .btn-action {
+            background-color: var(--electric-lime);
+            color: #000;
+            border: none;
+            padding: 0.85rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 14px rgba(200, 255, 62, 0.3);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            background-color: #d6ff66;
+        }
+
+        .btn-action:disabled {
+            background-color: var(--text-muted);
+            color: var(--card-bg);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Live Activity Simulation Box */
+        .terminal-box {
+            background-color: #050807;
+            border: 1px solid #11221A;
+            border-radius: 6px;
+            padding: 1rem;
+            height: 300px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .terminal-row {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .timestamp {
+            color: var(--vault-green);
+            flex-shrink: 0;
+        }
+
+        .log-success { color: var(--success); }
+        .log-info { color: var(--text-light); }
+        .log-alert { color: var(--electric-lime); }
+
+        /* Progress Bar Engine UI */
+        .progress-wrapper {
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar-container {
+            background-color: #050807;
+            height: 6px;
+            border-radius: 3px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background-color: var(--electric-lime);
+            height: 100%;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Ledger Table Design */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(13, 92, 58, 0.1);
+            color: var(--text-muted);
+            font-weight: 500;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-pill.dormant {
+            background: rgba(138, 149, 144, 0.1);
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+        }
+
+        .status-pill.recovered {
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        /* Split Step Visualization Pipeline */
+        .workflow-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .workflow-timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-step {
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -21px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            border: 2px solid var(--card-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-step.active::before {
+            background-color: var(--electric-lime);
+            box-shadow: 0 0 8px var(--electric-lime);
+        }
+
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Bottom Institutional Call-to-Action Frame */
+        .cta-box {
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(13, 92, 58, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-box h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .cta-box p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">Dust<span>Vault</span></div>
-  <div class="nav-links">
-    <a href="#how-it-works">How It Works</a>
-    <a href="#partners">For Partners</a>
-    <a href="#traction">Traction</a>
-    <a href="mailto:dustvaulthq@gmail.com">Contact</a>
-  </div>
-  <a href="#waitlist" class="nav-cta">Join Waitlist</a>
-</nav>
+    <nav>
+        <div class="logo"><i class="fa-solid fa-shield-halved" style="color: var(--vault-green);"></i> DUST<span>VAULT</span></div>
+        <div class="badge"><i class="fa-solid fa-bolt"></i> PILOT DEMO 1.0</div>
+    </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">Veteran-Owned Fintech · Piscataway, NJ · Est. 2026</div>
-  <h1>Your leftover<br><em>card money</em><br>belongs to you.</h1>
-  <p class="hero-sub">$70 billion in unclaimed property sits forgotten across America. DustVault's AI platform finds it, recovers it, and returns it — with 10% going to Veterans and those in need.</p>
-  <div class="hero-form" id="waitlist">
-    <input type="email" id="email-input" placeholder="your@email.com" />
-    <button onclick="joinWaitlist()">Claim My Spot</button>
-  </div>
-  <p class="hero-note">Free forever for early members · No spam · Unsubscribe anytime</p>
-  <p class="success-msg" id="success-msg">✓ You're on the list. We'll be in touch soon.</p>
-</section>
+    <div class="dashboard-container">
+        
+        <div class="demo-header">
+            <h1>AI-Powered Dormant Asset Discovery</h1>
+            <p>This sandbox environment demonstrates how DustVault securely integrates with program managers and benefits issuers (HSA/FSA/HRA) to discover dormant balances, run privacy-first cross-referencing, and safely handle asset reconciliation pipelines.</p>
+        </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat reveal">
-    <div class="stat-num">$70B+</div>
-    <div class="stat-label">Unclaimed property held by states</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">1 in 7</div>
-    <div class="stat-label">Americans have unclaimed funds</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">$4.49B</div>
-    <div class="stat-label">Returned to owners in FY2024 — record high</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">10%</div>
-    <div class="stat-label">Of every recovery goes to Veterans & homeless</div>
-  </div>
-</div>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Prepaid Assets Analyzed</div>
+                <div class="metric-value mono" id="metric-total">$42,840,000</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Dormancy Threshold Flagged</div>
+                <div class="metric-value mono highlight" id="metric-dormant">$0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Automated Recovery Pipeline</div>
+                <div class="metric-value mono" id="metric-recovered">$0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Compliance Validation Score</div>
+                <div class="metric-value mono" style="color: var(--success);">100%</div>
+            </div>
+        </div>
 
-<!-- TRACTION BAR -->
-<div class="traction-bar reveal">
-  <div class="traction-bar-label">Live Momentum — May 2026</div>
-  <div class="traction-items">
-    <span class="traction-item">NJEDA Founders & Funders — June 18 Confirmed</span>
-    <span class="traction-item">Plug & Play Accelerator — Submitted</span>
-    <span class="traction-item">WEX Inc — Partnership Outreach Active</span>
-    <span class="traction-item">7 Major Issuers Contacted</span>
-    <span class="traction-item">Verizon LISC Grant — Active</span>
-    <span class="traction-item">SCORE Mentor — Active</span>
-  </div>
-</div>
+        <div class="workspace-grid">
+            
+            <div class="panel">
+                <div class="panel-title">
+                    <span><i class="fa-solid fa-microchip"></i> System Run Environment</span>
+                    <span class="mono" style="font-size: 0.8rem; color: var(--text-muted);">Network: Connected</span>
+                </div>
 
-<!-- HOW IT WORKS -->
-<section class="section" id="how-it-works">
-  <p class="section-tag reveal">How it works</p>
-  <h2 class="section-title reveal">Three steps to<br>reclaim your dust.</h2>
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <div class="step-title">Add your cards</div>
-      <div class="step-desc">Enter your prepaid card details securely. We support Visa, Mastercard, Amex, and all major prepaid networks.</div>
+                <div class="scan-trigger-box" id="scan-box">
+                    <button class="btn-action" id="start-scan-btn" onclick="executeDemoPipeline()">
+                        <i class="fa-solid fa-play"></i> Initialize AI Recovery Scan
+                    </button>
+                    <div class="progress-wrapper" id="progress-area">
+                        <div class="progress-label">
+                            <span id="progress-status">Analyzing ledger arrays...</span>
+                            <span class="mono" id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="ledger-table">
+                        <thead>
+                            <tr>
+                                <th>Account Reference ID</th>
+                                <th>Asset Profile</th>
+                                <th>Dormancy Status</th>
+                                <th>Balance</th>
+                                <th>Reconciliation Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mono">DV-HSA-8831</td>
+                                <td>Health Savings (HSA)</td>
+                                <td><span class="status-pill dormant">Inactive &gt; 36mo</span></td>
+                                <td class="mono">$4,250.00</td>
+                                <td class="mono text-muted" id="row-1-action">Awaiting System Scan</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">DV-FSA-0294</td>
+                                <td>Flexible Spending (FSA)</td>
+                                <td><span class="status-pill dormant">Inactive &gt; 12mo</span></td>
+                                <td class="mono">$1,820.00</td>
+                                <td class="mono text-muted" id="row-2-action">Awaiting System Scan</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">DV-HRA-7741</td>
+                                <td>Health Reimburse (HRA)</td>
+                                <td><span class="status-pill dormant">Inactive &gt; 24mo</span></td>
+                                <td class="mono">$6,110.00</td>
+                                <td class="mono text-muted" id="row-3-action">Awaiting System Scan</td>
+                            </tr>
+                            <tr>
+                                <td class="mono">DV-PRE-5510</td>
+                                <td>Corporate Benefit Card</td>
+                                <td><span class="status-pill dormant">Inactive &gt; 48mo</span></td>
+                                <td class="mono">$3,440.00</td>
+                                <td class="mono text-muted" id="row-4-action">Awaiting System Scan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">
+                    <span><i class="fa-solid fa-terminal"></i> Core Output Monitoring</span>
+                </div>
+                <div class="terminal-box" id="terminal-log">
+                    <div class="terminal-row">
+                        <span class="timestamp mono">[15:41:02]</span>
+                        <span class="log-info">DustVault platform listening for instructions. Secure sandbox node initialized successfully.</span>
+                    </div>
+                </div>
+
+                <div class="panel-title" style="margin-top: 0.5rem;">
+                    <span><i class="fa-solid fa-diagram-project"></i> Workflow Execution Roadmap</span>
+                </div>
+                <div class="workflow-timeline">
+                    <div class="timeline-step" id="step-1">
+                        <div class="step-title">Structured Ledger Parsing</div>
+                        <div class="step-desc">Ingest enterprise file records safely without pulling restricted consumer PII fields.</div>
+                    </div>
+                    <div class="timeline-step" id="step-2">
+                        <div class="step-title">Cross-Reference Scoring</div>
+                        <div class="step-desc">Match dormant balance targets cleanly with institutional and state tracking records.</div>
+                    </div>
+                    <div class="timeline-step" id="step-3">
+                        <div class="step-title">Automated Secure Recovery</div>
+                        <div class="step-desc">Trigger standard reunification paths, avoiding long escheatment delays.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to Run a Secure Institutional Pilot?</h2>
+            <p>Discover how DustVault uncovers unrecognized financial assets while protecting enterprise compliance metrics. Let's customize a secure data layout matching your infrastructure parameters.</p>
+            <button class="btn-action" style="background-color: var(--text-light);" onclick="window.location.href='https://linktr.ee/dustvaulthq'">
+                <i class="fa-solid fa-calendar-days"></i> Access DustVault Linktree HUB
+            </button>
+        </div>
     </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <div class="step-title">We find your dust</div>
-      <div class="step-desc">DustVault scans every balance — even the $0.83 ones — and shows you exactly how much you've been leaving behind.</div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <div class="step-title">Sweep it all</div>
-      <div class="step-desc">One tap. All your leftover balances consolidated into a single DustVault wallet you can actually use anywhere.</div>
-    </div>
-  </div>
-</section>
 
-<!-- PROBLEM -->
-<div class="problem-section">
-  <div class="problem-inner">
-    <div class="reveal">
-      <p class="section-tag">The real problem</p>
-      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1.5rem">They call it "breakage."<br>We call it yours.</h2>
-      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.8">Card companies budget for the money you never use. It goes straight to their bottom line. Federal law says your card must be valid 5 years — but they know you'll forget long before that. Only 5% of outstanding unclaimed property is claimed each year. DustVault changes that math.</p>
-    </div>
-    <div class="problem-cards reveal">
-      <div class="problem-card">
-        <div class="problem-amount">$1.47</div>
-        <div class="problem-card-text">Visa gift card from last birthday. Forgotten in a drawer.</div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-amount">$3.22</div>
-        <div class="problem-card-text">Prepaid Mastercard from a rebate. Too small to use.</div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-amount">$0.83</div>
-        <div class="problem-card-text">Vanilla Visa from a promotion. Expired and gone.</div>
-      </div>
-      <div class="problem-card" style="border-color:rgba(201,168,76,0.4)">
-        <div class="problem-amount" style="font-size:1.2rem">$5.52</div>
-        <div class="problem-card-text" style="color:var(--gold);font-weight:500">That's yours. DustVault gets it back.</div>
-      </div>
-    </div>
-  </div>
-</div>
+    <footer>
+        &copy; 2026 DustVault Technologies LLC. All rights reserved. Secure, Privacy-First Fintech Infrastructure.
+    </footer>
 
-<!-- WHY NOW — REGULATORY TAILWIND -->
-<div class="why-now">
-  <div class="why-now-inner">
-    <div class="reveal">
-      <p class="section-tag">Why now</p>
-      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem">The regulatory window<br>is open. Right now.</h2>
-      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem">Issuers are under increasing pressure from the CFPB and state attorneys general to address dormant balances. The time to build this infrastructure is now — before enforcement makes it mandatory.</p>
-      <a href="mailto:dustvaulthq@gmail.com" class="btn-gold">Talk to Us</a>
-    </div>
-    <div class="why-points reveal">
-      <div class="why-point">
-        <div class="why-point-num">01</div>
-        <div class="why-point-text"><strong>CFPB Scrutiny Intensifying.</strong> The Consumer Financial Protection Bureau is actively monitoring dormant balance practices across prepaid card issuers.</div>
-      </div>
-      <div class="why-point">
-        <div class="why-point-num">02</div>
-        <div class="why-point-text"><strong>All 50 States Have Escheatment Laws.</strong> Every state requires issuers to report and remit dormant balances — compliance is not optional, and enforcement is growing.</div>
-      </div>
-      <div class="why-point">
-        <div class="why-point-num">03</div>
-        <div class="why-point-text"><strong>Only 5% Gets Claimed Annually.</strong> States returned a record $4.49B in FY2024 — but the vast majority of unclaimed funds never reach their owners.</div>
-      </div>
-      <div class="why-point">
-        <div class="why-point-num">04</div>
-        <div class="why-point-text"><strong>No Purpose-Built Solution Exists.</strong> DustVault is the first AI platform designed specifically for prepaid card dormant balance recovery at the issuer level.</div>
-      </div>
-    </div>
-  </div>
-</div>
+    <script>
+        function appendLog(text, type = 'info') {
+            const logBox = document.getElementById('terminal-log');
+            const now = new Date();
+            const timeStr = `[${now.toTimeString().split(' ')[0]}]`;
+            
+            const row = document.createElement('div');
+            row.className = 'terminal-row';
+            
+            let classStyle = 'log-info';
+            if(type === 'success') classStyle = 'log-success';
+            if(type === 'alert') classStyle = 'log-alert';
 
-<!-- FOR PARTNERS / B2B -->
-<div class="partners-section" id="partners">
-  <div class="partners-inner">
-    <p class="section-tag reveal">For Issuers & Investors</p>
-    <h2 class="section-title reveal" style="margin-bottom:0.5rem">Built for the companies<br>that hold the balances.</h2>
-    <p class="reveal" style="color:var(--text-muted);font-size:1rem;max-width:600px;margin-bottom:0">DustVault partners directly with prepaid card issuers to identify, recover, and reconcile dormant balances at scale — with zero upfront cost and a performance-based fee model.</p>
-    <div class="partners-grid">
-      <div class="partner-card reveal">
-        <div class="partner-card-icon">🤖</div>
-        <div class="partner-card-title">AI Recovery Engine</div>
-        <div class="partner-card-desc">Analyzes your card portfolio to identify dormant balances, prioritize recovery candidates, and automate compliant outreach — all without manual intervention.</div>
-      </div>
-      <div class="partner-card reveal">
-        <div class="partner-card-icon">📊</div>
-        <div class="partner-card-title">Compliance Dashboard</div>
-        <div class="partner-card-desc">Real-time reporting on dormant inventory, recovery rates, and regulatory deadlines. Built to satisfy CFPB and state AG requirements from day one.</div>
-      </div>
-      <div class="partner-card reveal">
-        <div class="partner-card-icon">💰</div>
-        <div class="partner-card-title">Performance-Based Pricing</div>
-        <div class="partner-card-desc">No recovery, no fee. Zero financial risk for the issuer. DustVault earns only when your cardholders get their money back. Everyone wins.</div>
-      </div>
-      <div class="partner-card reveal">
-        <div class="partner-card-icon">🎖️</div>
-        <div class="partner-card-title">Mission That Matters</div>
-        <div class="partner-card-desc">10% of every recovery goes directly to Veterans and people experiencing homelessness. Written into our operating agreement. Non-negotiable.</div>
-      </div>
-    </div>
-    <div class="partner-cta-row reveal">
-      <a href="mailto:dustvaulthq@gmail.com" class="btn-gold">Partner With DustVault</a>
-      <a href="mailto:dustvaulthq@gmail.com" class="btn-outline">Investor Inquiries</a>
-    </div>
-  </div>
-</div>
+            row.innerHTML = `<span class="timestamp mono">${timeStr}</span><span class="${classStyle}">${text}</span>`;
+            logBox.appendChild(row);
+            logBox.scrollTop = logBox.scrollHeight;
+        }
 
-<!-- TRACTION SECTION -->
-<div class="traction-section" id="traction">
-  <div class="traction-inner">
-    <p class="section-tag reveal">Traction</p>
-    <h2 class="section-title reveal" style="margin-bottom:0.5rem">Three weeks in.<br>Already moving.</h2>
-    <p class="reveal" style="color:var(--text-muted);font-size:1rem;max-width:560px">DustVault incorporated May 1, 2026. Here's what we've built since.</p>
-    <div class="traction-grid">
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Confirmed</div>
-        <div class="traction-card-title">NJEDA Founders & Funders</div>
-        <div class="traction-card-desc">Pitch slot confirmed — June 18, 2026. New Jersey's premier startup funding event.</div>
-      </div>
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Submitted</div>
-        <div class="traction-card-title">Plug & Play Accelerator</div>
-        <div class="traction-card-desc">Application submitted to one of the world's most active startup accelerators.</div>
-      </div>
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Active</div>
-        <div class="traction-card-title">7 Major Issuer Outreaches</div>
-        <div class="traction-card-desc">Partnership outreach sent to Green Dot, NetSpend, WEX, Blackhawk, InComm, Conduent, and Comdata.</div>
-      </div>
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Active</div>
-        <div class="traction-card-title">Verizon LISC Grant</div>
-        <div class="traction-card-desc">Grant #1095158-1 active. Pursuing non-dilutive capital from day one.</div>
-      </div>
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Live</div>
-        <div class="traction-card-title">AI Automation System</div>
-        <div class="traction-card-desc">Live grant-finding, partner outreach, and competitor intelligence running on autopilot since launch.</div>
-      </div>
-      <div class="traction-card reveal">
-        <div class="traction-card-status">✅ Active</div>
-        <div class="traction-card-title">SCORE Mentorship</div>
-        <div class="traction-card-desc">Working with SCORE mentor Bruce Smith on business strategy and network development.</div>
-      </div>
-    </div>
-  </div>
-</div>
+        function executeDemoPipeline() {
+            const startBtn = document.getElementById('start-scan-btn');
+            const progressArea = document.getElementById('progress-area');
+            const barFill = document.getElementById('bar-fill');
+            const progressStatus = document.getElementById('progress-status');
+            const progressPercent = document.getElementById('progress-percent');
+            
+            startBtn.disabled = true;
+            progressArea.style.display = 'block';
+            
+            let currentProgress = 0;
+            appendLog('Initializing cryptographic secure sandbox pipeline...', 'alert');
+            document.getElementById('step-1').classList.add('active');
 
-<!-- MISSION -->
-<div class="mission">
-  <h2>Built by a US Navy Veteran.<br>For every American leaving money behind.</h2>
-  <p>10% of every DustVault recovery goes directly to Veterans and those experiencing homelessness. Your forgotten balance becomes someone's lifeline.</p>
-  <a href="#waitlist" class="mission-cta">Join the Mission</a>
-</div>
+            const loopInterval = setInterval(() => {
+                currentProgress += 1;
+                barFill.style.width = currentProgress + '%';
+                progressPercent.innerText = currentProgress + '%';
 
-<!-- FOUNDER -->
-<div class="founder">
-  <p class="founder-quote reveal">"I had 6 prepaid cards in my drawer with money I couldn't use. <em>I was the first DustVault customer.</em> Now I'm building the platform so no one has to feel that way again."</p>
-  <p class="founder-name reveal"><strong>Keval Bhatt</strong> · Founder & CEO, DustVault Technologies · US Navy FMF Corpsman Veteran · Piscataway, NJ</p>
-</div>
+                if(currentProgress === 15) {
+                    progressStatus.innerText = "Parsing ledger array balances...";
+                    appendLog('Reading database fields. Compliance mask locked over consumer fields.', 'info');
+                }
+                if(currentProgress === 35) {
+                    document.getElementById('step-1').classList.remove('active');
+                    document.getElementById('step-2').classList.add('active');
+                    progressStatus.innerText = "Running cross-reference matches...";
+                    appendLog('Evaluating data against dormancy index tables...', 'info');
+                    document.getElementById('metric-dormant').innerText = "$15,640";
+                }
+                if(currentProgress === 65) {
+                    progressStatus.innerText = "Calculating recovery parameters...";
+                    appendLog('Match confirmed: 4 clear dormant asset lines verified.', 'alert');
+                }
+                if(currentProgress === 80) {
+                    document.getElementById('step-2').classList.remove('active');
+                    document.getElementById('step-3').classList.add('active');
+                    progressStatus.innerText = "Finalizing pipeline execution...";
+                    appendLog('Deploying automated recovery routing workflows...', 'info');
+                    
+                    updateTableRowsLive();
+                }
 
-<footer>
-  <div class="footer-logo">DustVault</div>
-  <div class="footer-links">
-    <a href="https://linkedin.com/company/dustvault-technologies">LinkedIn</a>
-    <a href="https://instagram.com/dustvaulthq">Instagram</a>
-    <a href="https://tiktok.com/@dustvaulthq">TikTok</a>
-    <a href="https://x.com/dustvaulthq">X</a>
-    <a href="mailto:dustvaulthq@gmail.com">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 DustVault Technologies LLC · Veteran-Owned · Piscataway, NJ</div>
-</footer>
+                if(currentProgress >= 100) {
+                    clearInterval(loopInterval);
+                    progressStatus.innerText = "Scan Routine Finished Successfully.";
+                    appendLog('Pipeline process executed. Total recovery asset balance secure.', 'success');
+                    document.getElementById('metric-recovered').innerText = "$15,640";
+                    startBtn.innerText = "Scan Routine Finished";
+                }
+            }, 75);
+        }
 
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => obs.observe(r));
-
-  function joinWaitlist() {
-    const email = document.getElementById('email-input').value;
-    const msg = document.getElementById('success-msg');
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    msg.classList.add('show');
-    document.getElementById('email-input').value = '';
-    const list = JSON.parse(localStorage.getItem('waitlist') || '[]');
-    list.push({ email, date: new Date().toISOString() });
-    localStorage.setItem('waitlist', JSON.stringify(list));
-  }
-
-  document.getElementById('email-input').addEventListener('keydown', function(e) {
-    if(e.key === 'Enter') joinWaitlist();
-  });
-</script>
+        function updateTableRowsLive() {
+            const targetIds = ['row-1-action', 'row-2-action', 'row-3-action', 'row-4-action'];
+            targetIds.forEach((id, i) => {
+                setTimeout(() => {
+                    const cell = document.getElementById(id);
+                    cell.innerHTML = '<span class="status-pill recovered"><i class="fa-solid fa-check"></i> Routed</span>';
+                    const row = cell.parentElement;
+                    const badgeCell = row.cells[2];
+                    badgeCell.innerHTML = '<span class="status-pill recovered">Pipeline Active</span>';
+                }, i * 400);
+            });
+        }
+    </script>
 </body>
 </html>
