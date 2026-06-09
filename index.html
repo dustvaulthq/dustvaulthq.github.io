@@ -135,7 +135,7 @@
             margin: 0 auto 3rem auto;
         }
 
-        /* Interactive Custom Buttons */
+        /* Custom Action Buttons */
         .btn-action {
             background-color: var(--vault-cyan);
             color: #060A0C;
@@ -249,6 +249,80 @@
         .feature-card p {
             color: var(--text-platinum);
             font-size: 0.98rem;
+        }
+
+        /* Institutional Onboarding Pipeline Section */
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 4rem 0 6rem 0;
+        }
+
+        .pipeline-step {
+            background: linear-gradient(180deg, var(--card-onyx) 0%, rgba(13, 21, 26, 0.3) 100%);
+            border: 1px solid var(--border-steel);
+            padding: 2rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--vault-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pipeline-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pipeline-step p {
+            font-size: 0.92rem;
+            color: var(--text-platinum);
+        }
+
+        /* Bank-Grade Compliance Blueprint Grid */
+        .compliance-wrapper {
+            background-color: #080D10;
+            border: 1px solid var(--border-steel);
+            padding: 3rem;
+            border-radius: 6px;
+            margin-bottom: 6rem;
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .compliance-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .compliance-card i {
+            color: var(--vault-cyan);
+            font-size: 1.4rem;
+            margin-top: 0.2rem;
+        }
+
+        .compliance-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .compliance-card p {
+            font-size: 0.92rem;
+            color: var(--text-platinum);
         }
 
         /* Custom System Sandbox Dashboard Section */
@@ -507,6 +581,63 @@
                     <div class="feature-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
                     <h3>Social Commitment Framework</h3>
                     <p>We combine high-tier fintech optimization with localized human action. A locked 10% of revenue directly builds houses, supplies survival packs, and drives outreach teams down into the streets to lift up unhoused veterans.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">The Operational Integration Pipeline</h2>
+            <p class="section-desc">Four distinct processing steps built to keep resource ingestion clean, fast, and entirely friction-free for administrators.</p>
+            
+            <div class="pipeline-grid">
+                <div class="pipeline-step">
+                    <div class="step-num">Phase 01</div>
+                    <h4>Ledger Ingestion</h4>
+                    <p>Historical programmatic balances are cross-referenced without passing individual client tracking information.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-num">Phase 02</div>
+                    <h4>AI Engine Audit</h4>
+                    <p>Our custom software layers flag dormant ledgers lagging behind corporate expiration windows.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-num">Phase 03</div>
+                    <h4>Reconciliation</h4>
+                    <p>Pragmatic accounting balances are processed and reported cleanly for institutional approval.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-num">Phase 04</div>
+                    <h4>Resource Extraction</h4>
+                    <p>Stagnant capital pipelines clear safely, simultaneously triggering the dedicated 10% veteran resource allocation pool.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="compliance-wrapper">
+            <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-bottom: 0.5rem;">Corporate Compliance Architecture</h2>
+            <p style="color: var(--text-platinum);">Engineered from the ground up to clear rigorous enterprise-tier regulatory reviews.</p>
+            
+            <div class="compliance-grid">
+                <div class="compliance-card">
+                    <i class="fa-solid fa-user-secret"></i>
+                    <div>
+                        <h5>Zero PII Retention Policy</h5>
+                        <p>We do not capture, track, or handle sensitive individual social security numbers or identity documents.</p>
+                    </div>
+                </div>
+                <div class="compliance-card">
+                    <i class="fa-solid fa-building-shield"></i>
+                    <div>
+                        <h5>Escheatment Defense</h5>
+                        <p>Isolate accounts ahead of statutory timelines, maximizing your internal asset preservation rate safely.</p>
+                    </div>
+                </div>
+                <div class="compliance-card">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <h5>SOC 2 Security Alignment</h5>
+                        <p>All scripts and parsing networks align with standard cloud framework data isolation policies.</p>
+                    </div>
                 </div>
             </div>
         </section>
