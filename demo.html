@@ -3,443 +3,739 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DustVault Technologies — Interactive Sandbox Simulator</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <title>DustVault Technologies — Live Platform Demo</title>
   <style>
-    /* MASTER FINTECH STYLE CONFIGURATION */
     :root {
-      --bg-dark-matte: #0D151A;
-      --bg-surface-steel: #141F26;
-      --border-steel: #22323D;
-      --vault-cyan: #00E5FF;
-      --vault-glow: rgba(0, 229, 255, 0.4);
-      --text-pure: #FFFFFF;
-      --text-platinum: #CFD8DC;
-      --text-muted: #78909C;
-      --system-green: #00E676;
+      --navy: #1B3A6B;
+      --navy-dark: #0a1f3d;
+      --navy-mid: #152e58;
+      --red: #C8102E;
+      --green: #1A6B3A;
+      --green-light: #D1FAE5;
+      --light: #EEF2F8;
+      --gray: #555555;
+      --border: #E0E6F0;
+      --text: #1a1a2e;
+      --sub: #6b7280;
+      --gold: #FFD700;
+      --gold-dark: #B8860B;
+      --cyan: #00C8E0;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg-dark-matte);
-      color: var(--text-pure);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #f0f4fa;
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    /* VETERAN MISSION BANNER */
-    .vet-banner {
-      background: linear-gradient(90deg, #1A1015 0%, #2A1520 50%, #1A1015 100%);
-      color: #FF8A8A;
-      text-align: center;
-      padding: 0.65rem 1rem;
-      font-size: 0.85rem;
-      border-bottom: 1px solid rgba(255, 138, 138, 0.2);
-      letter-spacing: 0.3px;
-      width: 100%;
-    }
-
-    /* NAVIGATION BAR - FIXED AND SPACED */
-    .sandbox-nav {
-      display: flex !important; 
-      justify-content: space-between !important; 
-      align-items: center !important; 
-      padding: 1.25rem 2rem !important; 
-      background-color: #0D151A !important; 
-      border-bottom: 1px solid var(--border-steel) !important;
-      width: 100% !important;
-    }
-
-    .sandbox-nav .logo {
-      text-decoration: none !important; 
-      color: var(--text-pure) !important; 
-      display: flex !important; 
-      align-items: center !important; 
-      gap: 0.6rem !important; 
-      font-weight: 700 !important; 
-      font-size: 1.35rem !important;
-      font-family: 'Space Grotesk', sans-serif !important;
-    }
-
-    .sandbox-nav .nav-links {
-      display: flex !important; 
-      gap: 1.5rem !important; 
-      align-items: center !important;
-    }
-
-    .sandbox-nav .nav-links a {
-      color: var(--text-platinum) !important; 
-      text-decoration: none !important; 
-      font-size: 0.88rem !important;
-    }
-
-    /* CONTAINER CORE */
-    .container {
-      max-width: 1240px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .grid-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    @media (min-width: 992px) {
-      .grid-layout {
-        grid-template-columns: 1.4fr 1fr;
-      }
-    }
-
-    /* BOX STYLING FRAMEWORK */
-    .vault-box {
-      background-color: var(--bg-surface-steel);
-      border: 1px solid var(--border-steel);
-      border-radius: 12px;
-      padding: 1.75rem;
-      position: relative;
-    }
-
-    .box-header {
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy-dark);
+      padding: 14px 28px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-steel);
-      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--gold);
     }
+    .logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+    .logo span { color: var(--gold); }
+    .tagline { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+    .badges { display: flex; align-items: center; gap: 10px; }
+    .badge { font-size: 11px; padding: 5px 13px; border-radius: 20px; font-weight: 700; }
+    .badge-live { background: #22c55e; color: #fff; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+    .badge-vosb { background: rgba(255,215,0,0.12); color: var(--gold); border: 1px solid rgba(255,215,0,0.35); }
+    .back-btn {
+      font-size: 11px;
+      padding: 5px 13px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all .2s;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
 
-    .box-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
+    /* ── MISSION BANNER ── */
+    .mission-banner {
+      background: linear-gradient(135deg, #0a1f3d 0%, #1B3A6B 100%);
+      border-bottom: 3px solid var(--gold);
+      padding: 14px 28px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-    }
-
-    /* CONTROLS */
-    .control-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .control-label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .vault-select {
-      width: 100%;
-      background-color: var(--bg-dark-matte);
-      border: 1px solid var(--border-steel);
-      border-radius: 6px;
-      color: var(--text-pure);
-      padding: 0.75rem;
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    .btn-run {
-      width: 100%;
-      background: linear-gradient(135deg, #00E5FF 0%, #00B0FF 100%);
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      padding: 1rem;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
       justify-content: center;
+      gap: 20px;
+    }
+    .mission-flag { font-size: 28px; }
+    .mission-text-wrap { text-align: center; }
+    .mission-headline { font-size: 15px; font-weight: 900; color: var(--gold); letter-spacing: .04em; text-transform: uppercase; }
+    .mission-subline { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 3px; line-height: 1.5; }
+    .mission-subline strong { color: var(--gold); }
+
+    /* ── WEX PILOT CALLOUT ── */
+    .pilot-callout {
+      background: linear-gradient(90deg, rgba(0,200,224,0.06) 0%, transparent 100%);
+      border: 1px solid rgba(0,200,224,0.25);
+      border-left: 4px solid var(--cyan);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--sub);
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 15px rgba(0, 229, 255, 0.25);
+      gap: 10px;
     }
-
-    /* METRICS */
-    .metrics-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .metric-card {
-      background-color: var(--bg-dark-matte);
-      border: 1px solid var(--border-steel);
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .metric-val {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
+    .pilot-callout strong { color: var(--navy); }
+    .pilot-callout .pilot-tag {
+      font-size: 10px;
+      background: var(--navy);
+      color: #fff;
+      padding: 3px 9px;
+      border-radius: 20px;
       font-weight: 700;
+      white-space: nowrap;
     }
-    .metric-val.cyan-txt { color: var(--vault-cyan); }
-    .metric-val.green-txt { color: var(--system-green); }
 
-    .metric-lbl {
-      font-size: 0.72rem;
-      color: var(--text-muted);
+    /* ── MAIN ── */
+    .main { padding: 22px 28px; max-width: 1200px; margin: 0 auto; }
+
+    /* ── STAT GRID ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .stat {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: transform .2s;
+    }
+    .stat:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(27,58,107,0.1); }
+    .stat-label { font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+    .stat-value { font-size: 24px; font-weight: 800; color: var(--navy); }
+    .stat-value.danger { color: var(--red); }
+    .stat-value.success { color: var(--green); }
+    .stat-value.gold { color: var(--gold-dark); }
+    .stat-sub { font-size: 10px; color: var(--sub); margin-top: 3px; }
+
+    /* ── STAGE ROW ── */
+    .stage-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stage {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .stage:hover { border-color: var(--navy); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(27,58,107,0.1); }
+    .stage.active { border-color: var(--navy); background: var(--light); box-shadow: 0 4px 16px rgba(27,58,107,0.12); }
+    .stage-num { font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
+    .stage-title { font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+    .stage-desc { font-size: 11px; color: var(--sub); line-height: 1.5; }
+
+    /* ── DETAIL BOX ── */
+    .detail {
+      background: var(--light);
+      border-left: 4px solid var(--navy);
+      border-radius: 0 8px 8px 0;
+      padding: 13px 16px;
+      margin-bottom: 16px;
+      font-size: 12.5px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    .detail strong { color: var(--navy); }
+
+    /* ── TWO COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 380px; gap: 14px; }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .table-header {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafbfc;
+    }
+    .table-title { font-size: 13px; font-weight: 800; color: var(--navy); }
+    .table-subtitle { font-size: 11px; color: var(--sub); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th {
+      text-align: left;
+      padding: 9px 11px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--sub);
       text-transform: uppercase;
-      margin-top: 0.25rem;
+      letter-spacing: .06em;
+      border-bottom: 1px solid var(--border);
+      background: #fafbfc;
     }
+    td { padding: 9px 11px; border-bottom: 1px solid #f0f4f8; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafcff; }
+    .risk { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; }
+    .risk-high { background: #FEE2E2; color: #991B1B; }
+    .risk-med { background: #FEF3C7; color: #92400E; }
+    .risk-low { background: #D1FAE5; color: #065F46; }
+    .mono { font-family: 'Courier New', monospace; font-size: 11px; color: var(--sub); }
+    .days-urgent { color: var(--red); font-weight: 700; }
+    .days-warn { color: #d97706; font-weight: 600; }
+    .days-ok { color: var(--green); }
+    .outreach-btn {
+      font-size: 11px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--sub);
+      transition: all .15s;
+      font-weight: 600;
+    }
+    .outreach-btn:hover { background: var(--light); border-color: var(--navy); color: var(--navy); }
+    .outreach-btn.sent { background: var(--green-light); border-color: #86efac; color: var(--green); }
 
-    /* TERMINAL */
-    .ledger-terminal {
-      background-color: #070B0E;
-      border: 1px solid var(--border-steel);
+    /* ── RIGHT PANEL ── */
+    .right-panel { display: flex; flex-direction: column; gap: 12px; }
+    .panel {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 15px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .panel-title { font-size: 11px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 11px; }
+    .metric-row { display: flex; justify-content: space-between; font-size: 12px; padding: 5px 0; border-bottom: 1px solid #f0f4f8; }
+    .metric-row:last-of-type { border-bottom: none; }
+    .metric-label { color: var(--sub); }
+    .metric-val { font-weight: 700; color: var(--navy); }
+    .metric-val.green { color: var(--green); }
+    .metric-val.red { color: var(--red); }
+    .slider-top { display: flex; justify-content: space-between; font-size: 11px; color: var(--sub); margin-bottom: 4px; margin-top: 8px; }
+    .slider-val-bold { font-weight: 800; color: var(--navy); }
+    input[type=range] { width: 100%; accent-color: var(--navy); cursor: pointer; }
+    .prog-bar { height: 7px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-top: 5px; margin-bottom: 4px; }
+    .prog-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--navy), #4f7bc8); transition: width .4s ease; }
+
+    /* ── VETERAN PANEL ── */
+    .vet-panel {
+      background: linear-gradient(160deg, #0a1f3d 0%, #1B3A6B 100%);
+      border-radius: 10px;
+      border: 2px solid var(--gold);
+      padding: 18px;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(27,58,107,0.25);
+    }
+    .vet-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .vet-panel-icon { font-size: 28px; }
+    .vet-panel-title { font-size: 13px; font-weight: 900; color: var(--gold); text-transform: uppercase; letter-spacing: .04em; line-height: 1.3; }
+    .vet-big { font-size: 38px; font-weight: 900; color: var(--gold); text-align: center; margin: 6px 0 3px; letter-spacing: -.5px; }
+    .vet-big-label { font-size: 11px; color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 12px; line-height: 1.6; }
+    .vet-big-label strong { color: var(--gold); }
+    .vet-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 10px 0; }
+    .vet-row { display: flex; justify-content: space-between; font-size: 11px; padding: 4px 0; }
+    .vet-row-label { color: rgba(255,255,255,0.6); }
+    .vet-row-val { color: var(--gold); font-weight: 700; }
+    .vet-statement {
+      background: rgba(255,215,0,0.07);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 7px;
+      padding: 11px;
+      margin-top: 10px;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .vet-statement strong { color: var(--gold); font-style: normal; }
+
+    /* ── CONTROL GROUP ── */
+    .ctrl-row { display: flex; justify-content: space-between; font-size: 12px; padding: 5px 0; border-bottom: 1px solid #f0f4f8; }
+    .ctrl-row:last-child { border-bottom: none; }
+    .ctrl-label { color: var(--sub); }
+    .ctrl-val { font-weight: 700; color: var(--navy); }
+
+    /* ── WEX PILOT SUMMARY PANEL ── */
+    .wex-panel {
+      background: linear-gradient(135deg, #f8faff 0%, #eef2f8 100%);
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .wex-panel-title { font-size: 11px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .wex-row { display: flex; justify-content: space-between; font-size: 11.5px; padding: 5px 0; border-bottom: 1px solid #dde4f0; }
+    .wex-row:last-child { border-bottom: none; }
+    .wex-label { color: var(--sub); }
+    .wex-val { font-weight: 700; color: var(--navy); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--green);
+      color: #fff;
+      padding: 13px 20px;
       border-radius: 8px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 0.85rem;
-      padding: 1rem;
-      height: 240px;
-      overflow-y: auto;
-      color: var(--text-platinum);
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
+    .toast.show { opacity: 1; }
 
-    .terminal-line { margin-bottom: 0.4rem; }
-    .term-ts { color: var(--text-muted); }
-    .term-info { color: var(--vault-cyan); }
-    .term-success { color: var(--system-green); }
-
-    /* PIPELINE TRACKER */
-    .pipeline-wrapper { position: relative; margin-top: 1rem; }
-    .pipe-step { display: flex; gap: 1rem; margin-bottom: 1.5rem; position: relative; }
-    .pipe-step:not(:last-child)::after {
-      content: ''; position: absolute; left: 12px; top: 26px; bottom: -20px; width: 2px; background-color: var(--border-steel);
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy-dark);
+      border-top: 3px solid var(--gold);
+      padding: 14px 28px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .pipe-icon {
-      width: 26px; height: 26px; border-radius: 50%; background-color: var(--bg-dark-matte); border: 2px solid var(--border-steel);
-      display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--text-muted); z-index: 2;
-    }
-    .pipe-step.active .pipe-icon { border-color: var(--vault-cyan); color: var(--vault-cyan); box-shadow: 0 0 8px var(--vault-glow); }
-    .pipe-step.complete .pipe-icon { border-color: var(--system-green); color: var(--system-green); }
-    .pipe-details h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
-    .pipe-details p { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-left { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .footer-center { font-size: 12px; color: var(--gold); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-right { font-size: 11px; color: rgba(255,255,255,0.5); }
 
-    .sandbox-footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-steel); color: var(--text-muted); font-size: 0.85rem; margin-top: 4rem; }
+    /* ── PROGRESS BAR ANIMATION ── */
+    .run-btn {
+      font-size: 13px;
+      padding: 9px 20px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .run-btn:hover { background: var(--navy-mid); }
+    .run-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+    .scan-progress-bar { height: 6px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-top: 8px; margin-bottom: 4px; width: 100%; }
+    .scan-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--navy), var(--cyan)); transition: width .08s linear; width: 0%; }
+    .scan-status { font-size: 11px; color: var(--sub); margin-top: 4px; }
+
+    @media (max-width: 900px) {
+      .stat-grid { grid-template-columns: repeat(3, 1fr); }
+      .stage-row { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="vet-banner">
-    🇺🇸 &nbsp;<strong>Mission-Locked:</strong> 10% of every dollar DustVault earns goes directly to housing and supporting homeless U.S. Veterans — no exceptions.
+<div class="toast" id="toast">✓ Outreach triggered — member notified automatically</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>
+    <div class="logo"><span>Dust</span>Vault Technologies</div>
+    <div class="tagline">AI-Powered Dormant Balance Recovery &amp; Escheatment Compliance Platform</div>
+  </div>
+  <div class="badges">
+    <a href="index.html" class="back-btn">← Back to Site</a>
+    <span class="badge badge-live">● LIVE DEMO</span>
+    <span class="badge badge-vosb">🎖 Veteran-Owned</span>
+  </div>
+</div>
+
+<!-- MISSION BANNER -->
+<div class="mission-banner">
+  <div class="mission-flag">🎖</div>
+  <div class="mission-text-wrap">
+    <div class="mission-headline">DustVault Donates 10% of ALL Revenue to U.S. Veterans &amp; Those Experiencing Homelessness</div>
+    <div class="mission-subline">
+      Founded by a <strong>U.S. Navy FMF Corpsman</strong> &nbsp;|&nbsp;
+      Every dollar recovered funds those who served &nbsp;|&nbsp;
+      <strong>Written into our operating agreement — not a marketing line</strong>
+    </div>
+  </div>
+  <div class="mission-flag">🇺🇸</div>
+</div>
+
+<div class="main">
+
+  <!-- PILOT CALLOUT -->
+  <div class="pilot-callout">
+    <span class="pilot-tag">ENTERPRISE PILOT SAMPLE</span>
+    <span>Illustrative account data representing a typical FSA/HRA/HSA issuer portfolio. Account IDs anonymized for demo purposes. &nbsp;<strong>This is what your team would see from day one of a DustVault pilot.</strong></span>
   </div>
 
-  <nav class="sandbox-nav">
-    <a href="index.html" class="logo">
-      <i class="fa-solid fa-shield-halved" style="color:var(--vault-cyan);"></i>
-      DUST<span style="color: var(--vault-cyan);">VAULT</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html#how-it-works">How It Works</a>
-      <a href="index.html#compliance">Compliance</a>
-      <a href="index.html" style="color: var(--vault-cyan); font-weight: 600;"><i class="fa-solid fa-house"></i> Return Home</a>
+  <!-- STAT GRID -->
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Accounts Scanned</div>
+      <div class="stat-value" id="s1">0</div>
+      <div class="stat-sub">FSA + HRA + HSA this quarter</div>
     </div>
-  </nav>
-
-  <div class="container">
-    <div class="grid-layout">
-      
-      <div style="display: flex; flex-direction: column; gap: 2rem;">
-        <div class="vault-box">
-          <div class="box-header">
-            <div class="box-title">
-              <i class="fa-solid fa-sliders" style="color: var(--vault-cyan);"></i>
-              Asset Ingestion Configurator
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Target Issuer Institution Profile</label>
-            <select class="vault-select" id="issuerProfile">
-              <option value="wex">WEX Health & Benefits Infrastructure (Sample Set)</option>
-              <option value="tpa">Regional Benefits Third-Party Administrator (TPA)</option>
-              <option value="prepaid">Prepaid Card & Paycard Issuer Pool</option>
-            </select>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Masked Sample Account Data Volume</label>
-            <select class="vault-select" id="dataVolume">
-              <option value="500">500 Anonymized Pilot Records (Standard Scope)</option>
-              <option value="5000">5,000 Historical Benefit Accounts</option>
-              <option value="25000">25,000 Dormancy Trial Records</option>
-            </select>
-          </div>
-
-          <button class="btn-run" id="startBtn" onclick="runSimulation()">
-            <i class="fa-solid fa-play"></i> Run Dormancy Recovery Pipeline
-          </button>
-        </div>
-
-        <div class="vault-box">
-          <div class="box-header">
-            <div class="box-title">
-              <i class="fa-solid fa-terminal" style="color: var(--system-green);"></i>
-              DustVault Engine Output Ledger
-            </div>
-            <span id="engineStatus" style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">READY</span>
-          </div>
-
-          <div class="metrics-row">
-            <div class="metric-card">
-              <div class="metric-val" id="mProcessed">-</div>
-              <div class="metric-lbl">Scanned</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-val cyan-txt" id="mDormant">-</div>
-              <div class="metric-lbl">Flagged</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-val green-txt" id="mValue">-</div>
-              <div class="metric-lbl">Identified ($)</div>
-            </div>
-          </div>
-
-          <div class="ledger-terminal" id="terminalLog">
-            <div class="terminal-line term-ts">[SYSTEM INITIALIZED] DustVault Sandbox Core Engine 1.0 Online. Ready for batch execution...</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="vault-box" style="height: 100%;">
-          <div class="box-header">
-            <div class="box-title">
-              <i class="fa-solid fa-route" style="color: var(--vault-cyan);"></i>
-              4-Phase Recovery Pipeline Tracking
-            </div>
-          </div>
-          
-          <div class="pipeline-wrapper">
-            <div class="pipe-step" id="step1">
-              <div class="pipe-icon"><i class="fa-solid fa-database"></i></div>
-              <div class="pipe-details">
-                <h4>Phase 1: Secure Data Ingestion</h4>
-                <p>Accepting masked structural data profiles with 100% PII isolation.</p>
-              </div>
-            </div>
-            <div class="pipe-step" id="step2">
-              <div class="pipe-icon"><i class="fa-solid fa-brain"></i></div>
-              <div class="pipe-details">
-                <h4>Phase 2: AI Dormancy Analysis</h4>
-                <p>Cross-referencing inactivity windows against statutory rules.</p>
-              </div>
-            </div>
-            <div class="pipe-step" id="step3">
-              <div class="pipe-icon"><i class="fa-solid fa-paper-plane"></i></div>
-              <div class="pipe-details">
-                <h4>Phase 3: Automated Re-Engagement</h4>
-                <p>Simulating targeted notifications to dormant cardholders.</p>
-              </div>
-            </div>
-            <div class="pipe-step" id="step4">
-              <div class="pipe-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-              <div class="pipe-details">
-                <h4>Phase 4: Compliance Filing Architecture</h4>
-                <p>Structuring required automated asset reporting for accounts.</p>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top: 2rem; padding: 1rem; background-color: rgba(0, 229, 255, 0.04); border: 1px dashed var(--border-steel); border-radius: 8px; text-align: center;">
-            <a href="https://calendly.com/dustvaulthq/30min" target="_blank" style="display: inline-block; background-color: transparent; color: var(--vault-cyan); border: 1px solid var(--vault-cyan); border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
-              Request Institutional Pilot Review <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <div class="stat">
+      <div class="stat-label">At-Risk Accounts</div>
+      <div class="stat-value danger" id="s2">0</div>
+      <div class="stat-sub">Dormancy flag triggered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Recoverable Value</div>
+      <div class="stat-value success" id="s3">$0</div>
+      <div class="stat-sub">Before escheatment deadline</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Outreach Sent</div>
+      <div class="stat-value" id="s4">0</div>
+      <div class="stat-sub">Automated re-engagement</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">🎖 Veteran Fund</div>
+      <div class="stat-value gold" id="s5">$0</div>
+      <div class="stat-sub">10% of DustVault revenue</div>
     </div>
   </div>
 
-  <footer class="sandbox-footer">
-    <p>&copy; 2026 DustVault Technologies LLC. All Rights Reserved.</p>
-  </footer>
+  <!-- STAGE ROW -->
+  <div class="stage-row">
+    <div class="stage active" id="stage-1" onclick="setStage(1)">
+      <div class="stage-num">Stage 01</div>
+      <div class="stage-title">🔍 Identify</div>
+      <div class="stage-desc">AI scans every account against all 50 state dormancy windows — 48hr turnaround</div>
+    </div>
+    <div class="stage" id="stage-2" onclick="setStage(2)">
+      <div class="stage-num">Stage 02</div>
+      <div class="stage-title">⚡ Prioritize</div>
+      <div class="stage-desc">Ranked by balance, days to deadline, and escheatment urgency</div>
+    </div>
+    <div class="stage" id="stage-3" onclick="setStage(3)">
+      <div class="stage-num">Stage 03</div>
+      <div class="stage-title">📬 Re-Engage</div>
+      <div class="stage-desc">Personalized automated outreach before forfeiture — zero human required</div>
+    </div>
+    <div class="stage" id="stage-4" onclick="setStage(4)">
+      <div class="stage-num">Stage 04</div>
+      <div class="stage-title">📋 Comply</div>
+      <div class="stage-desc">State-specific escheatment filing prepared automatically — all 50 states</div>
+    </div>
+  </div>
 
-  <script>
-    function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-    async function runSimulation() {
-      const startBtn = document.getElementById('startBtn');
-      const term = document.getElementById('terminalLog');
-      const statusElement = document.getElementById('engineStatus');
-      const mProcessed = document.getElementById('mProcessed');
-      const mDormant = document.getElementById('mDormant');
-      const mValue = document.getElementById('mValue');
-      const s1 = document.getElementById('step1');
-      const s2 = document.getElementById('step2');
-      const s3 = document.getElementById('step3');
-      const s4 = document.getElementById('step4');
+  <!-- DETAIL BOX -->
+  <div class="detail" id="detail">
+    <strong>How identification works:</strong> DustVault ingests your account data and runs every account against all 50 state dormancy laws — built in. It checks last transaction date, current balance, account type, and state-specific deadline. Every at-risk account surfaces within 48 hours of receiving your file. No manual review. No spreadsheets. No guessing.
+  </div>
 
-      startBtn.disabled = true;
-      term.innerHTML = '';
-      statusElement.innerText = 'PROCESSING';
-      [s1, s2, s3, s4].forEach(s => s.classList.remove('active', 'complete'));
+  <!-- TWO COLUMN -->
+  <div class="two-col">
 
-      const inputVol = parseInt(document.getElementById('dataVolume').value);
-      const profile = document.getElementById('issuerProfile').value.toUpperCase();
+    <!-- TABLE -->
+    <div class="table-wrap">
+      <div class="table-header">
+        <div>
+          <div class="table-title">At-Risk Account Queue — Pilot Sample</div>
+          <div class="table-subtitle">Click "Send outreach" to trigger automated re-engagement on any account</div>
+        </div>
+        <div>
+          <button class="run-btn" id="scan-btn" onclick="runFullScan()">▶ Run Full Scan</button>
+          <div class="scan-progress-bar" id="scan-prog-wrap" style="display:none;width:120px;">
+            <div class="scan-fill" id="scan-fill"></div>
+          </div>
+          <div class="scan-status" id="scan-status"></div>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Account ID</th>
+            <th>Type</th>
+            <th>Balance</th>
+            <th>Last Activity</th>
+            <th>State</th>
+            <th>Days to Deadline</th>
+            <th>Risk</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="acct-body"></tbody>
+      </table>
+    </div>
 
-      function logLine(text, styleClass = '') {
-        const time = new Date().toLocaleTimeString();
-        const line = document.createElement('div');
-        line.className = 'terminal-line';
-        line.innerHTML = `<span class="term-ts">[${time}]</span> <span class="${styleClass}">${text}</span>`;
-        term.appendChild(line);
-        term.scrollTop = term.scrollHeight;
-      }
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
 
-      s1.classList.add('active');
-      logLine(`[INGESTION START] Accessing target group: ${profile}...`, 'term-info');
-      await sleep(1000);
-      mProcessed.innerText = inputVol;
-      s1.classList.remove('active'); s1.classList.add('complete');
+      <!-- RECOVERY PROJECTION -->
+      <div class="panel">
+        <div class="panel-title">📊 Recovery Projection</div>
+        <div class="metric-row">
+          <span class="metric-label">Total dormant balance identified</span>
+          <span class="metric-val">$487,320</span>
+        </div>
+        <div class="slider-top">
+          <span>Re-engagement rate</span>
+          <span class="slider-val-bold" id="eng-pct">35%</span>
+        </div>
+        <input type="range" min="10" max="60" value="35" id="eng-slider" oninput="updateProj()">
+        <div class="prog-bar"><div class="prog-fill" id="prog" style="width:35%"></div></div>
+        <div class="metric-row" style="margin-top:8px">
+          <span class="metric-label">Member recovery</span>
+          <span class="metric-val green" id="p-rec">$170,562</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">DustVault fee (12%)</span>
+          <span class="metric-val" id="p-fee">$20,467</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Escheatment eliminated</span>
+          <span class="metric-val red" id="p-esc">$316,758</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label" style="color:var(--gold-dark);font-weight:700">🎖 Veteran fund</span>
+          <span class="metric-val" style="color:var(--gold-dark)" id="p-vet">$2,047</span>
+        </div>
+      </div>
 
-      s2.classList.add('active');
-      logLine(`[ANALYSIS START] Running dormancy filters...`, 'term-info');
-      await sleep(1200);
-      let flaggedCount = Math.floor(inputVol * 0.28);
-      let recoveredValue = Math.floor(flaggedCount * 114);
-      logLine(`[MATCH CONCLUDED] Flags raised on ${flaggedCount} accounts.`, 'term-success');
-      mDormant.innerText = flaggedCount;
-      mValue.innerText = '$' + recoveredValue.toLocaleString();
-      s2.classList.remove('active'); s2.classList.add('complete');
+      <!-- VETERAN PANEL -->
+      <div class="vet-panel">
+        <div class="vet-panel-header">
+          <div class="vet-panel-icon">🎖</div>
+          <div class="vet-panel-title">Veteran &amp; Homeless Fund<br>Mission Impact</div>
+        </div>
+        <div class="vet-big" id="m-total">$2,047</div>
+        <div class="vet-big-label">
+          goes directly to <strong>U.S. Veterans</strong> &amp;<br>
+          <strong>those experiencing homelessness</strong><br>
+          from this pilot alone
+        </div>
+        <hr class="vet-divider">
+        <div class="vet-row">
+          <span class="vet-row-label">DustVault fee earned</span>
+          <span class="vet-row-val" id="m-fee">$20,467</span>
+        </div>
+        <div class="vet-row">
+          <span class="vet-row-label">10% veteran contribution</span>
+          <span class="vet-row-val" id="m-contrib">$2,047</span>
+        </div>
+        <div class="vet-row">
+          <span class="vet-row-label">Founder service</span>
+          <span class="vet-row-val">U.S. Navy FMF Corpsman</span>
+        </div>
+        <div class="vet-row">
+          <span class="vet-row-label">Business model</span>
+          <span class="vet-row-val">Pure revenue-share</span>
+        </div>
+        <div class="vet-statement">
+          <strong>This is not a marketing line.</strong> It is written into DustVault's operating agreement. Every recovery we make for our issuer partners directly funds the veterans who served this country — and those experiencing homelessness today.
+        </div>
+      </div>
 
-      s3.classList.add('active');
-      logLine(`[OUTREACH] Triggering automated notifications...`, 'term-info');
-      await sleep(1000);
-      s3.classList.remove('active'); s3.classList.add('complete');
+      <!-- CONTROL GROUP -->
+      <div class="panel">
+        <div class="panel-title">🔬 Control Group Methodology</div>
+        <div class="ctrl-row">
+          <span class="ctrl-label">Treatment group (outreach)</span>
+          <span class="ctrl-val">80% — 3,078 accounts</span>
+        </div>
+        <div class="ctrl-row">
+          <span class="ctrl-label">Control group (held back)</span>
+          <span class="ctrl-val">20% — 769 accounts</span>
+        </div>
+        <div class="ctrl-row">
+          <span class="ctrl-label">Fee model</span>
+          <span class="ctrl-val" style="color:var(--green)">Zero cost until recovery ✓</span>
+        </div>
+        <div style="font-size:11px;color:var(--sub);margin-top:9px;line-height:1.6;">
+          Recovery attributable to DustVault = spend-down rate difference between treatment and control groups. Clean. Auditable. Defensible to your legal and compliance team.
+        </div>
+      </div>
 
-      s4.classList.add('active');
-      logLine(`[COMPLIANCE] Mapping reporting formats...`, 'term-info');
-      await sleep(800);
-      logLine(`[BATCH COMPLETE] Core pipeline operation resting.`, 'term-success');
-      s4.classList.remove('active'); s4.classList.add('complete');
+      <!-- WEX PILOT CONTEXT -->
+      <div class="wex-panel">
+        <div class="wex-panel-title">🏢 Enterprise Pilot Scope</div>
+        <div class="wex-row">
+          <span class="wex-label">Target program types</span>
+          <span class="wex-val">FSA · HRA · HSA · Prepaid</span>
+        </div>
+        <div class="wex-row">
+          <span class="wex-label">States covered</span>
+          <span class="wex-val">All 50</span>
+        </div>
+        <div class="wex-row">
+          <span class="wex-label">Time to first results</span>
+          <span class="wex-val">48 hours</span>
+        </div>
+        <div class="wex-row">
+          <span class="wex-label">Upfront cost to issuer</span>
+          <span class="wex-val" style="color:var(--green)">$0.00</span>
+        </div>
+        <div class="wex-row">
+          <span class="wex-label">DustVault recovery fee</span>
+          <span class="wex-val">12% of recovered value</span>
+        </div>
+        <div class="wex-row">
+          <span class="wex-label">Pilot booking</span>
+          <span class="wex-val"><a href="https://linktr.ee/dustvaulthq" target="_blank" style="color:var(--navy);">linktr.ee/dustvaulthq</a></span>
+        </div>
+      </div>
 
-      statusElement.innerText = 'IDLE / COMPLETE';
-      startBtn.disabled = false;
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">DustVault Technologies LLC &nbsp;|&nbsp; Veteran-Owned Small Business &nbsp;|&nbsp; dustvaulthq@gmail.com &nbsp;|&nbsp; (640) 837-2202</div>
+  <div class="footer-center">🎖 10% of ALL Revenue — U.S. Veterans &amp; Those Experiencing Homelessness 🇺🇸</div>
+  <div class="footer-right">dustvaulthq.github.io &nbsp;|&nbsp; linktr.ee/dustvaulthq</div>
+</div>
+
+<script>
+const accounts = [
+  {id:"DV-HRA-00891", type:"HRA", bal:3210, last:"Oct 17, 2025", state:"NY", days:9,  risk:"high"},
+  {id:"DV-FSA-00412", type:"FSA", bal:1842, last:"Nov 3, 2025",  state:"NJ", days:18, risk:"high"},
+  {id:"DV-FSA-02341", type:"FSA", bal:1650, last:"Sep 30, 2025", state:"PA", days:22, risk:"high"},
+  {id:"DV-FSA-01204", type:"FSA", bal:612,  last:"Dec 1, 2025",  state:"DE", days:34, risk:"high"},
+  {id:"DV-HSA-00334", type:"HSA", bal:890,  last:"Jan 8, 2026",  state:"CA", days:52, risk:"med"},
+  {id:"DV-HSA-00712", type:"HSA", bal:730,  last:"Nov 15, 2025", state:"IL", days:41, risk:"med"},
+  {id:"DV-FSA-00778", type:"FSA", bal:2100, last:"Jan 22, 2026", state:"TX", days:74, risk:"med"},
+  {id:"DV-HRA-01055", type:"HRA", bal:445,  last:"Feb 14, 2026", state:"FL", days:110, risk:"low"},
+];
+
+const details = [
+  "<strong>How identification works:</strong> DustVault ingests your account data and runs every account against all 50 state dormancy laws — built in. It checks last transaction date, current balance, account type, and state-specific deadline. Every at-risk account surfaces within 48 hours of receiving your file. No manual review. No spreadsheets. No guessing.",
+  "<strong>How prioritization works:</strong> Every flagged account is scored by (1) balance size, (2) days remaining before state escheatment, and (3) account type risk profile. High-risk accounts with large balances and tight deadlines hit the top of the queue. Your compliance team sees what matters first — not a dump of thousands of unsorted accounts.",
+  "<strong>How re-engagement works:</strong> DustVault triggers a personalized outreach sequence automatically. Email first — telling the member their exact balance, what they can spend it on, and the exact deadline. SMS follow-up if no action. The message is specific and urgent, not a generic reminder. No human sends anything. Zero cost until balances are recovered.",
+  "<strong>How compliance works:</strong> For balances crossing the dormancy threshold without re-engagement, DustVault automatically applies state-specific escheatment rules — exemptions, partial remittance, filing schedules, due diligence notices — and prepares complete state filing documentation. All 50 states. Your team reviews and submits. We do the heavy lifting."
+];
+
+let triggered = {};
+
+function buildTable() {
+  const tbody = document.getElementById('acct-body');
+  tbody.innerHTML = '';
+  accounts.forEach((a, i) => {
+    const rClass = a.risk==='high' ? 'risk-high' : a.risk==='med' ? 'risk-med' : 'risk-low';
+    const rLabel = a.risk==='high' ? 'HIGH' : a.risk==='med' ? 'MED' : 'LOW';
+    const dClass = a.days<=30 ? 'days-urgent' : a.days<=70 ? 'days-warn' : 'days-ok';
+    const isSent = triggered[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="mono">${a.id}</td>
+      <td>${a.type}</td>
+      <td><strong>$${a.bal.toLocaleString()}</strong></td>
+      <td style="font-size:11px;color:var(--sub)">${a.last}</td>
+      <td><strong>${a.state}</strong></td>
+      <td class="${dClass}">${a.days}d</td>
+      <td><span class="risk ${rClass}">${rLabel}</span></td>
+      <td><button class="outreach-btn${isSent ? ' sent' : ''}" onclick="sendOutreach(${i})">${isSent ? '✓ Sent' : 'Send outreach'}</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function sendOutreach(i) {
+  triggered[i] = true;
+  buildTable();
+  document.getElementById('s4').textContent = Object.keys(triggered).length;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function setStage(n) {
+  [1,2,3,4].forEach(i => document.getElementById('stage-'+i).classList.toggle('active', i===n));
+  document.getElementById('detail').innerHTML = details[n-1];
+}
+
+function updateProj() {
+  const r = parseInt(document.getElementById('eng-slider').value) / 100;
+  const total = 487320;
+  const rec = Math.round(total * r);
+  const fee = Math.round(rec * 0.12);
+  const esc = total - rec;
+  const vet = Math.round(fee * 0.10);
+  document.getElementById('eng-pct').textContent = Math.round(r*100) + '%';
+  document.getElementById('prog').style.width = Math.round(r*100) + '%';
+  document.getElementById('p-rec').textContent = '$' + rec.toLocaleString();
+  document.getElementById('p-fee').textContent = '$' + fee.toLocaleString();
+  document.getElementById('p-esc').textContent = '$' + esc.toLocaleString();
+  document.getElementById('p-vet').textContent = '$' + vet.toLocaleString();
+  document.getElementById('m-fee').textContent = '$' + fee.toLocaleString();
+  document.getElementById('m-contrib').textContent = '$' + vet.toLocaleString();
+  document.getElementById('m-total').textContent = '$' + vet.toLocaleString();
+  document.getElementById('s5').textContent = '$' + vet.toLocaleString();
+}
+
+function runFullScan() {
+  const btn = document.getElementById('scan-btn');
+  const wrap = document.getElementById('scan-prog-wrap');
+  const fill = document.getElementById('scan-fill');
+  const status = document.getElementById('scan-status');
+  btn.disabled = true;
+  wrap.style.display = 'block';
+  status.textContent = 'Scanning...';
+  let p = 0;
+  const iv = setInterval(() => {
+    p++;
+    fill.style.width = p + '%';
+    if(p === 30) status.textContent = 'Parsing dormancy rules...';
+    if(p === 65) status.textContent = 'Flagging at-risk accounts...';
+    if(p >= 100) {
+      clearInterval(iv);
+      status.textContent = '✓ Scan complete';
+      btn.textContent = '✓ Scan Complete';
+      // trigger all outreach for demo
+      accounts.forEach((_,i) => { triggered[i] = true; });
+      buildTable();
+      document.getElementById('s4').textContent = accounts.length;
     }
-  </script>
+  }, 30);
+}
+
+function animateStats() {
+  const targets = { s1: 21500, s2: 3847, s3: 487320 };
+  let t = 0;
+  const dur = 60;
+  const iv = setInterval(() => {
+    t++;
+    const p = Math.min(t / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    document.getElementById('s1').textContent = Math.round(targets.s1 * ease).toLocaleString();
+    document.getElementById('s2').textContent = Math.round(targets.s2 * ease).toLocaleString();
+    document.getElementById('s3').textContent = '$' + Math.round(targets.s3 * ease).toLocaleString();
+    if (p >= 1) clearInterval(iv);
+  }, 20);
+}
+
+buildTable();
+animateStats();
+updateProj();
+</script>
 </body>
 </html>
