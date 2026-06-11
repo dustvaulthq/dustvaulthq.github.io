@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DustVault Technologies — Interactive Sandbox Sandbox Simulator</title>
+  <title>DustVault Technologies — Interactive Sandbox Simulator</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2 family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -48,45 +48,41 @@
       font-size: 0.85rem;
       border-bottom: 1px solid rgba(255, 138, 138, 0.2);
       letter-spacing: 0.3px;
+      width: 100%;
     }
 
-    /* NAVIGATION BAR */
+    /* NAVIGATION BAR - FIXED AND SPACED */
     .sandbox-nav {
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 1.1rem 2rem; 
-      background-color: rgba(13, 21, 26, 0.92); 
-      backdrop-filter: blur(14px); 
-      border-bottom: 1px solid var(--border-steel);
+      display: flex !important; 
+      justify-content: space-between !important; 
+      align-items: center !important; 
+      padding: 1.25rem 2rem !important; 
+      background-color: #0D151A !important; 
+      border-bottom: 1px solid var(--border-steel) !important;
+      width: 100% !important;
     }
 
     .sandbox-nav .logo {
-      text-decoration: none; 
-      color: var(--text-pure); 
-      display: flex; 
-      align-items: center; 
-      gap: 0.6rem; 
-      font-weight: 700; 
-      font-size: 1.35rem;
-      font-family: 'Space Grotesk', sans-serif;
+      text-decoration: none !important; 
+      color: var(--text-pure) !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 0.6rem !important; 
+      font-weight: 700 !important; 
+      font-size: 1.35rem !important;
+      font-family: 'Space Grotesk', sans-serif !important;
     }
 
     .sandbox-nav .nav-links {
-      display: flex; 
-      gap: 1.5rem; 
-      align-items: center;
+      display: flex !important; 
+      gap: 1.5rem !important; 
+      align-items: center !important;
     }
 
     .sandbox-nav .nav-links a {
-      color: var(--text-platinum); 
-      text-decoration: none; 
-      font-size: 0.88rem;
-      transition: color 0.2s ease;
-    }
-
-    .sandbox-nav .nav-links a:hover {
-      color: var(--vault-cyan);
+      color: var(--text-platinum) !important; 
+      text-decoration: none !important; 
+      font-size: 0.88rem !important;
     }
 
     /* CONTAINER CORE */
@@ -108,7 +104,7 @@
       }
     }
 
-    /* BOX STYLING Framework */
+    /* BOX STYLING FRAMEWORK */
     .vault-box {
       background-color: var(--bg-surface-steel);
       border: 1px solid var(--border-steel);
@@ -135,7 +131,7 @@
       gap: 0.6rem;
     }
 
-    /* RUN SIMULATOR CONTROL PANEL */
+    /* CONTROLS */
     .control-group {
       margin-bottom: 1.25rem;
     }
@@ -150,7 +146,7 @@
       letter-spacing: 0.5px;
     }
 
-    .vault-select, .vault-input {
+    .vault-select {
       width: 100%;
       background-color: var(--bg-dark-matte);
       border: 1px solid var(--border-steel);
@@ -160,10 +156,6 @@
       font-family: inherit;
       font-size: 0.95rem;
       outline: none;
-    }
-
-    .vault-select:focus, .vault-input:focus {
-      border-color: var(--vault-cyan);
     }
 
     .btn-run {
@@ -180,16 +172,10 @@
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
-      transition: all 0.2s ease;
       box-shadow: 0 4px 15px rgba(0, 229, 255, 0.25);
     }
 
-    .btn-run:hover {
-      opacity: 0.95;
-      box-shadow: 0 4px 20px var(--vault-glow);
-    }
-
-    /* DIGITAL METRICS ROW */
+    /* METRICS */
     .metrics-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -209,9 +195,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--text-pure);
     }
-
     .metric-val.cyan-txt { color: var(--vault-cyan); }
     .metric-val.green-txt { color: var(--system-green); }
 
@@ -220,10 +204,9 @@
       color: var(--text-muted);
       text-transform: uppercase;
       margin-top: 0.25rem;
-      font-weight: 500;
     }
 
-    /* LEDGER TERMINAL DISPLAYS */
+    /* TERMINAL */
     .ledger-terminal {
       background-color: #070B0E;
       border: 1px solid var(--border-steel);
@@ -236,84 +219,27 @@
       color: var(--text-platinum);
     }
 
-    .terminal-line {
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
-    }
-
+    .terminal-line { margin-bottom: 0.4rem; }
     .term-ts { color: var(--text-muted); }
     .term-info { color: var(--vault-cyan); }
     .term-success { color: var(--system-green); }
 
-    /* RECOVERY FLOW STEPS */
-    .pipeline-wrapper {
-      position: relative;
-      margin-top: 1rem;
-    }
-
-    .pipe-step {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-
+    /* PIPELINE TRACKER */
+    .pipeline-wrapper { position: relative; margin-top: 1rem; }
+    .pipe-step { display: flex; gap: 1rem; margin-bottom: 1.5rem; position: relative; }
     .pipe-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 12px;
-      top: 26px;
-      bottom: -20px;
-      width: 2px;
-      background-color: var(--border-steel);
+      content: ''; position: absolute; left: 12px; top: 26px; bottom: -20px; width: 2px; background-color: var(--border-steel);
     }
-
     .pipe-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background-color: var(--bg-dark-matte);
-      border: 2px solid var(--border-steel);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      z-index: 2;
+      width: 26px; height: 26px; border-radius: 50%; background-color: var(--bg-dark-matte); border: 2px solid var(--border-steel);
+      display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--text-muted); z-index: 2;
     }
+    .pipe-step.active .pipe-icon { border-color: var(--vault-cyan); color: var(--vault-cyan); box-shadow: 0 0 8px var(--vault-glow); }
+    .pipe-step.complete .pipe-icon { border-color: var(--system-green); color: var(--system-green); }
+    .pipe-details h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .pipe-details p { font-size: 0.82rem; color: var(--text-muted); }
 
-    .pipe-step.active .pipe-icon {
-      border-color: var(--vault-cyan);
-      color: var(--vault-cyan);
-      box-shadow: 0 0 8px var(--vault-glow);
-    }
-
-    .pipe-step.complete .pipe-icon {
-      border-color: var(--system-green);
-      color: var(--system-green);
-      background-color: rgba(0, 230, 118, 0.05);
-    }
-
-    .pipe-details h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.15rem;
-    }
-
-    .pipe-details p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* FOOTER BAR */
-    .sandbox-footer {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      border-top: 1px solid var(--border-steel);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 4rem;
-    }
+    .sandbox-footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-steel); color: var(--text-muted); font-size: 0.85rem; margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -325,7 +251,7 @@
   <nav class="sandbox-nav">
     <a href="index.html" class="logo">
       <i class="fa-solid fa-shield-halved" style="color:var(--vault-cyan);"></i>
-      DUST<span style="color: var(--vault-cyan); text-shadow: 0 0 10px var(--vault-glow);">VAULT</span>
+      DUST<span style="color: var(--vault-cyan);">VAULT</span>
     </a>
     <div class="nav-links">
       <a href="index.html#how-it-works">How It Works</a>
@@ -338,14 +264,12 @@
     <div class="grid-layout">
       
       <div style="display: flex; flex-direction: column; gap: 2rem;">
-        
         <div class="vault-box">
           <div class="box-header">
             <div class="box-title">
               <i class="fa-solid fa-sliders" style="color: var(--vault-cyan);"></i>
               Asset Ingestion Configurator
             </div>
-            <span style="font-size:0.75rem; color:var(--text-muted); background:var(--bg-dark-matte); padding:4px 8px; border-radius:4px; border:1px solid var(--border-steel);">Simulation Sandbox</span>
           </div>
 
           <div class="control-group">
@@ -377,7 +301,7 @@
               <i class="fa-solid fa-terminal" style="color: var(--system-green);"></i>
               DustVault Engine Output Ledger
             </div>
-            <span id="engineStatus" style="font-size:0.75rem; color:var(--text-muted); font-weight:600;"><i class="fa-solid fa-circle" style="font-size:8px; color:var(--text-muted); margin-right:4px;"></i>READY</span>
+            <span id="engineStatus" style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">READY</span>
           </div>
 
           <div class="metrics-row">
@@ -396,10 +320,9 @@
           </div>
 
           <div class="ledger-terminal" id="terminalLog">
-            <div class="terminal-line term-ts">[SYSTEM INITIALIZED] DustVault Sandbox Core Engine 1.0 Online. Ready for operational batch execution input...</div>
+            <div class="terminal-line term-ts">[SYSTEM INITIALIZED] DustVault Sandbox Core Engine 1.0 Online. Ready for batch execution...</div>
           </div>
         </div>
-
       </div>
 
       <div>
@@ -411,55 +334,42 @@
             </div>
           </div>
           
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            Watch how DustVault takes completely raw, anonymized issuer data and loops it through automated validation and outreach in real time.
-          </p>
-
           <div class="pipeline-wrapper">
-            
             <div class="pipe-step" id="step1">
               <div class="pipe-icon"><i class="fa-solid fa-database"></i></div>
               <div class="pipe-details">
                 <h4>Phase 1: Secure Data Ingestion</h4>
-                <p>Accepting masked structural data profiles (Account ID, Last Activity, Balance) with 100% PII isolation.</p>
+                <p>Accepting masked structural data profiles with 100% PII isolation.</p>
               </div>
             </div>
-
             <div class="pipe-step" id="step2">
               <div class="pipe-icon"><i class="fa-solid fa-brain"></i></div>
               <div class="pipe-details">
                 <h4>Phase 2: AI Dormancy Analysis</h4>
-                <p>Cross-referencing inactivity windows against up-to-date state escheatment frameworks & statutory rules.</p>
+                <p>Cross-referencing inactivity windows against statutory rules.</p>
               </div>
             </div>
-
             <div class="pipe-step" id="step3">
               <div class="pipe-icon"><i class="fa-solid fa-paper-plane"></i></div>
               <div class="pipe-details">
                 <h4>Phase 3: Automated Re-Engagement</h4>
-                <p>Simulating targeted smart notifications to dormant cardholders to unlock spend loops prior to state filings.</p>
+                <p>Simulating targeted notifications to dormant cardholders.</p>
               </div>
             </div>
-
             <div class="pipe-step" id="step4">
               <div class="pipe-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
               <div class="pipe-details">
                 <h4>Phase 4: Compliance Filing Architecture</h4>
-                <p>Structuring required automated asset reporting for accounts crossing irreversible statutory limits.</p>
+                <p>Structuring required automated asset reporting for accounts.</p>
               </div>
             </div>
-
           </div>
 
           <div style="margin-top: 2rem; padding: 1rem; background-color: rgba(0, 229, 255, 0.04); border: 1px dashed var(--border-steel); border-radius: 8px; text-align: center;">
-            <p style="font-size: 0.85rem; color: var(--text-platinum); margin-bottom: 0.75rem;">
-              Ready to view your enterprise asset architecture exposure?
-            </p>
-            <a href="https://calendly.com/dustvaulthq/30min" target="_blank" style="display: inline-block; background-color: transparent; color: var(--vault-cyan); border: 1px solid var(--vault-cyan); border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.2s;">
-              Request Institutional Pilot Review <i class="fa-solid fa-arrow-right" style="font-size:10px; margin-left:4px;"></i>
+            <a href="https://calendly.com/dustvaulthq/30min" target="_blank" style="display: inline-block; background-color: transparent; color: var(--vault-cyan); border: 1px solid var(--vault-cyan); border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+              Request Institutional Pilot Review <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
-
         </div>
       </div>
 
@@ -467,37 +377,26 @@
   </div>
 
   <footer class="sandbox-footer">
-    <p style="margin-bottom: 0.5rem;">&copy; 2026 DustVault Technologies LLC. All Rights Reserved.</p>
-    <p style="color: var(--text-muted); font-size: 0.75rem;">DustVault is a secure compliance automation utility engine. All institutional test sets are isolated, simulated, and safely executed under strict PII protection compliance protocols.</p>
+    <p>&copy; 2026 DustVault Technologies LLC. All Rights Reserved.</p>
   </footer>
 
   <script>
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
+    function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
     async function runSimulation() {
       const startBtn = document.getElementById('startBtn');
       const term = document.getElementById('terminalLog');
       const statusElement = document.getElementById('engineStatus');
-      
       const mProcessed = document.getElementById('mProcessed');
       const mDormant = document.getElementById('mDormant');
       const mValue = document.getElementById('mValue');
-
       const s1 = document.getElementById('step1');
       const s2 = document.getElementById('step2');
       const s3 = document.getElementById('step3');
       const s4 = document.getElementById('step4');
 
-      // Clear layout elements back to default state
       startBtn.disabled = true;
-      startBtn.style.opacity = '0.6';
       term.innerHTML = '';
-      
-      statusElement.innerHTML = `<i class="fa-solid fa-circle" style="font-size:8px; color:var(--vault-cyan); margin-right:4px; animation: pulse 1s infinite;"></i>PROCESSING`;
-      statusElement.style.color = 'var(--vault-cyan)';
-
+      statusElement.innerText = 'PROCESSING';
       [s1, s2, s3, s4].forEach(s => s.classList.remove('active', 'complete'));
 
       const inputVol = parseInt(document.getElementById('dataVolume').value);
@@ -512,62 +411,36 @@
         term.scrollTop = term.scrollHeight;
       }
 
-      // PHASE 1 EXECUTION
       s1.classList.add('active');
-      logLine(`[INGESTION START] Accessing isolated database payload target group: ${profile}...`, 'term-info');
-      await sleep(1200);
-      logLine(`Parsing structure data file... Isolated ${inputVol} accounts successfully.`, 'term-platinum');
+      logLine(`[INGESTION START] Accessing target group: ${profile}...`, 'term-info');
+      await sleep(1000);
       mProcessed.innerText = inputVol;
-      s1.classList.remove('active');
-      s1.classList.add('complete');
+      s1.classList.remove('active'); s1.classList.add('complete');
 
-      // PHASE 2 EXECUTION
       s2.classList.add('active');
-      logLine(`[ANALYSIS START] Pushing payload array downstream into DustVault Analysis Engine...`, 'term-info');
-      await sleep(1500);
-      
-      // Calculate dynamic test stats based on chosen drop down selection
+      logLine(`[ANALYSIS START] Running dormancy filters...`, 'term-info');
+      await sleep(1200);
       let flaggedCount = Math.floor(inputVol * 0.28);
       let recoveredValue = Math.floor(flaggedCount * 114);
-
-      logLine(`Cross-referencing escheatment databases and statutory guidelines rules across 50 jurisdictions...`, 'term-platinum');
-      await sleep(1000);
-      logLine(`[MATCH CONCLUDED] Flags raised on ${flaggedCount} dormant accounts containing stale asset balances.`, 'term-success');
-      
+      logLine(`[MATCH CONCLUDED] Flags raised on ${flaggedCount} accounts.`, 'term-success');
       mDormant.innerText = flaggedCount;
       mValue.innerText = '$' + recoveredValue.toLocaleString();
-      
-      s2.classList.remove('active');
-      s2.classList.add('complete');
+      s2.classList.remove('active'); s2.classList.add('complete');
 
-      // PHASE 3 EXECUTION
       s3.classList.add('active');
-      logLine(`[OUTREACH ROUTER] Triggering automated micro-engagement re-spend sequence simulations...`, 'term-info');
-      await sleep(1600);
-      let simulatedSaves = Math.floor(flaggedCount * 0.32);
-      logLine(`Simulated notifications deployed. ${simulatedSaves} account owners initialized asset reclaim actions.`, 'term-success');
-      logLine(`Spend volume loop successfully re-routed into issuer ledger infrastructure ecosystem.`, 'term-platinum');
-      s3.classList.remove('active');
-      s3.classList.add('complete');
+      logLine(`[OUTREACH] Triggering automated notifications...`, 'term-info');
+      await sleep(1000);
+      s3.classList.remove('active'); s3.classList.add('complete');
 
-      // PHASE 4 EXECUTION
       s4.classList.add('active');
-      logLine(`[COMPLIANCE DEPLOY] Mapping remaining long-term stale accounts to automated state filing schemas...`, 'term-info');
-      await sleep(1200);
-      logLine(`Assembling secure automated audit ledger records for local jurisdictional compliance tracking.`, 'term-platinum');
+      logLine(`[COMPLIANCE] Mapping reporting formats...`, 'term-info');
       await sleep(800);
-      logLine(`[BATCH COMPLETE] All automated recovery rules executed successfully. Operational pipeline resting.`, 'term-success');
-      
-      s4.classList.remove('active');
-      s4.classList.add('complete');
+      logLine(`[BATCH COMPLETE] Core pipeline operation resting.`, 'term-success');
+      s4.classList.remove('active'); s4.classList.add('complete');
 
-      // Reset controls back to ready state
-      statusElement.innerHTML = `<i class="fa-solid fa-circle" style="font-size:8px; color:var(--system-green); margin-right:4px;"></i>IDLE / COMPLETE`;
-      statusElement.style.color = 'var(--system-green)';
+      statusElement.innerText = 'IDLE / COMPLETE';
       startBtn.disabled = false;
-      startBtn.style.opacity = '1';
     }
   </script>
-
 </body>
 </html>
