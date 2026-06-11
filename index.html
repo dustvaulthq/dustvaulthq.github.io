@@ -24,13 +24,24 @@
             line-height: 1.6;
         }
 
+        .vet-banner {
+            background: linear-gradient(90deg, #1f1b2c 0%, #111 100%);
+            border-bottom: 2px solid var(--ice-cyan);
+            color: var(--text-bright);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
         header {
             background-color: rgba(13, 17, 23, 0.95);
             border-bottom: 1px solid var(--border-color);
             padding: 20px;
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 42px;
             z-index: 1000;
             box-sizing: border-box;
         }
@@ -67,23 +78,26 @@
         }
 
         .hero {
-            padding: 160px 20px 80px 20px;
+            padding: 200px 20px 80px 20px;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         h1 {
-            font-size: 42px;
+            font-size: 46px;
             color: var(--text-bright);
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 19px;
+            margin-bottom: 35px;
             color: var(--text-main);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
@@ -114,7 +128,7 @@
 
         .section-title {
             text-align: center;
-            font-size: 28px;
+            font-size: 32px;
             color: var(--text-bright);
             margin-bottom: 50px;
         }
@@ -134,7 +148,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 30px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
         .card:hover {
@@ -145,84 +159,63 @@
         .card h3 {
             color: var(--text-bright);
             margin-top: 0;
-            font-size: 20px;
+            font-size: 22px;
+            margin-bottom: 15px;
         }
 
-        /* Demo Dashboard Area */
-        .demo-container {
-            background-color: #010409;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .stat-box {
+            background-color: #10141b;
+            border: 1px dashed var(--border-color);
             padding: 25px;
+            border-radius: 6px;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--matrix-glow);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rev-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 40px;
             margin-top: 30px;
         }
 
-        .demo-terminal {
-            background-color: #0d1117;
+        .rev-split {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .rev-left { flex: 1; min-width: 300px; }
+        .rev-right {
+            background: #0d1117;
+            padding: 30px;
             border-radius: 6px;
-            padding: 15px;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 13px;
-            color: #58a6ff;
-            height: 150px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-            border: 1px solid #21262d;
-        }
-
-        .demo-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            text-align: left;
-        }
-
-        .demo-table th {
-            border-bottom: 2px solid var(--border-color);
-            padding: 10px;
-            color: var(--text-bright);
-        }
-
-        .demo-table td {
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px;
-        }
-
-        .status-badge {
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-waiting { background-color: #382402; color: #e3b341; }
-        .status-active { background-color: #1f2421; color: #3fb950; }
-
-        .progress-bar-container {
-            background-color: #21262d;
-            border-radius: 4px;
-            height: 8px;
-            width: 100%;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .progress-bar {
-            background-color: var(--matrix-glow);
-            height: 100%;
-            width: 0%;
-            border-radius: 4px;
-            transition: width 0.1s linear;
-        }
-
-        /* Impact Badge */
-        .impact-banner {
-            background: linear-gradient(90deg, #1f1b2c 0%, #0d1117 100%);
-            border-left: 4px solid var(--ice-cyan);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 40px;
-            text-align: left;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            min-width: 250px;
         }
 
         footer {
@@ -230,23 +223,27 @@
             padding: 40px 20px;
             border-top: 1px solid var(--border-color);
             font-size: 13px;
+            background-color: #0c0f14;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
+
+    <div class="vet-banner">
+        🎖️ PROUDLY VETERAN-OWNED & OPERATED | 10% OF ALL REVENUE DIRECTLY HOUSES HOMELESS U.S. VETERANS
+    </div>
 
     <header>
         <div class="header-container">
             <div class="logo">DUST<span>VAULT</span></div>
             <nav class="nav-links">
-                <a href="#features">Features</a>
+                <a href="#problem">The Exposure</a>
+                <a href="#features">Capabilities</a>
                 <a href="#pipeline">Integration</a>
-                <a href="#compliance">Compliance</a>
-                <a href="#demo">Live Sandbox</a>
+                <a href="#revenue">Performance Pricing</a>
+                <a href="demo.html" class="btn" style="padding: 5px 15px; margin-left: 15px; font-size: 13px;">Launch Sandbox</a>
             </nav>
         </div>
     </header>
@@ -254,12 +251,37 @@
     <section class="hero">
         <h1>AI-Driven Benefit Recovery & Asset Compliance</h1>
         <p>Automating dormant account resolution, minimizing state escheatment liability, and recovering unspent pre-paid metrics for institutional issuers and third-party benefit administrators.</p>
-        <a href="#demo" class="btn">View System Demo</a>
+        <a href="demo.html" class="btn">Launch Core Interactive Sandbox Simulator</a>
     </section>
 
     <hr style="border: 0; border-top: 1px solid var(--border-color);">
 
-    <section id="features" class="section">
+    <section id="problem" class="section">
+        <h2 class="section-title">The Institutional <span>Escheatment Problem</span></h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-num">$78B+</div>
+                <div class="stat-label">Dormant Capital Swept</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">50</div>
+                <div class="stat-label">State Jurisdictions</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">48hr</div>
+                <div class="stat-label">Audit Engine Ingestion</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">0%</div>
+                <div class="stat-label">Upfront Capital Risk</div>
+            </div>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 17px; color: var(--text-main);">
+            Millions of FSA, HRA, and specialized healthcare spending accounts systematically go dormant annually. When accounts sit inactive beyond strict statutory periods, strict state regulatory guidelines mandate asset forfeiture through escheatment. DustVault insulates administrators completely from expensive auditing, monitoring, and administrative overhead.
+        </p>
+    </section>
+
+    <section id="features" class="section" style="border-top: 1px solid var(--border-color);">
         <h2 class="section-title">Institutional <span>Capabilities</span></h2>
         <div class="grid">
             <div class="card">
@@ -299,69 +321,25 @@
         </div>
     </section>
 
-    <section id="compliance" class="section">
-        <h2 class="section-title">Corporate <span>Compliance Architecture</span></h2>
-        <div class="grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="card">
-                <h3>Regulatory Risk Insulation</h3>
-                <p>Our infrastructure parses intricate guidelines continuously across jurisdictional state borders to eliminate tracking deficiencies, preventing expensive corporate penalties and reporting omissions completely.</p>
-            </div>
-            <div class="card">
-                <h3>Bank-Grade Data Security Standards</h3>
-                <p>Data formatting processes function under strict localized privacy controls. End-to-end data encryption safeguards institutional file records seamlessly during every analysis phase.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo" class="section" style="border-top: 1px solid var(--border-color);">
-        <h2 class="section-title">Interactive <span>System Demo Node</span></h2>
-        <div class="demo-container">
-            <div style="margin-bottom: 20px; text-align: center;">
-                <button class="btn" id="runScanBtn" onclick="startSandboxScan()">Execute AI Core Sandbox Scan</button>
-            </div>
-
-            <div class="progress-bar-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-
-            <div class="demo-terminal" id="terminalLog">
-                [SYSTEM STATUS]: Core Engine Standing By. Ready to ingest pilot datasets...
-            </div>
-
-            <table class="demo-table">
-                <thead>
-                    <tr>
-                        <th>Batch Identifier</th>
-                        <th>Account Portfolio Type</th>
-                        <th>Identified Balance Volume</th>
-                        <th>Compliance Evaluation Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#DV-FSA-0922</td>
-                        <td>Healthcare Flexible Spending Account</td>
-                        <td>$142,450.00</td>
-                        <td><span class="status-badge status-waiting" id="row1-status">Standing By</span></td>
-                    </tr>
-                    <tr>
-                        <td>#DV-HRA-1104</td>
-                        <td>Health Reimbursement Arrangement</td>
-                        <td>$289,100.00</td>
-                        <td><span class="status-badge status-waiting" id="row2-status">Standing By</span></td>
-                    </tr>
-                    <tr>
-                        <td>#DV-MA-4481</td>
-                        <td>Medicare Advantage Flex Layer</td>
-                        <td>$87,650.00</td>
-                        <td><span class="status-badge status-waiting" id="row3-status">Standing By</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="impact-banner">
-                <strong style="color: var(--text-bright); display: block; margin-bottom: 5px;">🎖️ Purpose-Driven Operational Impact</strong>
-                DustVault is a proud, veteran-owned fintech enterprise. 10% of our top-line contractual recovery fees go directly toward supporting and establishing stable housing networks for homeless U.S. Veterans. We combine elite business value with mission-focused human results.
+    <section id="revenue" class="section">
+        <h2 class="section-title">Pure Performance <span>Pricing Model</span></h2>
+        <div class="rev-panel">
+            <div class="rev-split">
+                <div class="rev-left">
+                    <h3 style="color: var(--text-bright); margin-top:0;">Zero Capital Risk, Absolute Alignment</h3>
+                    <p>DustVault operates exclusively on a contingency-based format. We charge no implementation costs, no software licenses, and no monthly administrative retainers. We only win when you recover unspent structural balances or clear multi-state regulatory fine tracks completely.</p>
+                    <ul style="padding-left: 20px; color: var(--text-main);">
+                        <li style="margin-bottom: 10px;">Complete data setup and processing cost absorbed by DustVault.</li>
+                        <li style="margin-bottom: 10px;">Full access to administrative tracking reporting channels.</li>
+                        <li style="margin-bottom: 10px;">Direct 10% cash pledge to Veteran housing networks built straight into our fee split structure.</li>
+                    </ul>
+                </div>
+                <div class="rev-right">
+                    <div style="font-size: 56px; font-weight: bold; color: var(--text-bright); margin-bottom: 5px;">12%</div>
+                    <div style="color: var(--ice-cyan); font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Flat Contingency Fee</div>
+                    <hr style="border:0; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+                    <p style="font-size: 13px; color: var(--text-main); margin: 0;">Calculated strictly on actual capital successfully recovered or compliance overhead mitigated.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -370,55 +348,5 @@
         <p>&copy; 2026 DustVault Technologies LLC. All Rights Reserved. | Veteran-Owned Fintech Ecosystem</p>
     </footer>
 
-    <script>
-        function startSandboxScan() {
-            const btn = document.getElementById('runScanBtn');
-            const term = document.getElementById('terminalLog');
-            const pBox = document.getElementById('progressContainer');
-            const pBar = document.getElementById('progressBar');
-            
-            btn.disabled = true;
-            btn.innerText = "Processing Sandbox File Run...";
-            pBox.style.display = "block";
-            pBar.style.width = "0%";
-            
-            term.innerHTML = "[INITIATING]: Accessing secure sandbox framework folder...<br>";
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 2;
-                pBar.style.width = progress + "%";
-                
-                if(progress === 20) {
-                    term.innerHTML += "[INGESTION COMPLETE]: Ingested 3 parallel platform trial records.<br>";
-                    term.scrollTop = term.scrollHeight;
-                }
-                if(progress === 45) {
-                    term.innerHTML += "[PARSING DATA]: Checking state escheatment maps vs balance inactivity calendars...<br>";
-                    document.getElementById('row1-status').className = "status-badge status-active";
-                    document.getElementById('row1-status').innerText = "Account Cleared";
-                    term.scrollTop = term.scrollHeight;
-                }
-                if(progress === 70) {
-                    term.innerHTML += "[OUTREACH PIPELINE GENERATED]: Resolving compliance profiles...<br>";
-                    document.getElementById('row2-status').className = "status-badge status-active";
-                    document.getElementById('row2-status').innerText = "Account Cleared";
-                    term.scrollTop = term.scrollHeight;
-                }
-                if(progress === 90) {
-                    document.getElementById('row3-status').className = "status-badge status-active";
-                    document.getElementById('row3-status').innerText = "Account Cleared";
-                }
-                
-                if(progress >= 100) {
-                    clearInterval(interval);
-                    term.innerHTML += "[SUCCESS]: System scan complete. 100% of pipeline assets evaluated. Zero tracking defects logged.<br>";
-                    term.scrollTop = term.scrollHeight;
-                    btn.disabled = false;
-                    btn.innerText = "Re-run AI Core Sandbox Scan";
-                }
-            }, 80);
-        }
-    </script>
 </body>
 </html>
