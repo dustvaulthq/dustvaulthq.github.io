@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DustVault Technologies | Benefit Asset Recovery & Compliance</title>
+    <title>DustVault Technologies | Enterprise Benefit Asset Recovery & Escheatment Compliance</title>
     <style>
         :root {
             --steel-black: #0d1117;
@@ -192,74 +192,30 @@
             letter-spacing: 1px;
         }
 
-        /* Interactive ROI Simulator Panel Styles */
-        .interactive-panel {
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            border: 1px solid var(--ice-cyan);
-            border-radius: 12px;
+        .rev-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
             padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+            margin-top: 30px;
         }
 
-        .slider-group {
-            margin-bottom: 30px;
-        }
-
-        .slider-group label {
+        .rev-split {
             display: flex;
             justify-content: space-between;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-bright);
-            margin-bottom: 10px;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
-        .slider-group label span {
-            color: var(--ice-cyan);
-        }
-
-        .custom-slider {
-            width: 100%;
-            -webkit-appearance: none;
-            background: #21262d;
-            height: 8px;
-            border-radius: 4px;
-            outline: none;
-        }
-
-        .custom-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--matrix-glow);
-            cursor: pointer;
-            box-shadow: 0 0 10px var(--matrix-glow);
-        }
-
-        .results-box {
-            background-color: rgba(22, 27, 34, 0.8);
+        .rev-left { flex: 1; min-width: 300px; }
+        .rev-right {
+            background: #0d1117;
+            padding: 30px;
+            border-radius: 6px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
             text-align: center;
-            margin-top: 25px;
-        }
-
-        .res-num {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--text-bright);
-        }
-
-        .res-num.glow {
-            color: var(--matrix-glow);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+            min-width: 250px;
         }
 
         footer {
@@ -284,9 +240,9 @@
             <div class="logo">DUST<span>VAULT</span></div>
             <nav class="nav-links">
                 <a href="#problem">The Exposure</a>
-                <a href="#simulator">ROI Engine</a>
                 <a href="#features">Capabilities</a>
                 <a href="#pipeline">Integration</a>
+                <a href="#revenue">Performance Pricing</a>
                 <a href="demo.html" class="btn" style="padding: 5px 15px; margin-left: 15px; font-size: 13px;">Launch Sandbox</a>
             </nav>
         </div>
@@ -294,7 +250,7 @@
 
     <section class="hero">
         <h1>AI-Driven Benefit Recovery & Asset Compliance</h1>
-        <p>Automating dormant account resolution, minimizing state escheatment liability, and recovering unspent metrics for institutional issuers and third-party benefit administrators.</p>
+        <p>Automating dormant account resolution, minimizing state escheatment liability, and recovering unspent pre-paid metrics for institutional issuers and third-party benefit administrators.</p>
         <a href="demo.html" class="btn">Launch Core Interactive Sandbox Simulator</a>
     </section>
 
@@ -321,39 +277,8 @@
             </div>
         </div>
         <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 17px; color: var(--text-main);">
-            Millions of FSA, HRA, and specialized healthcare spending accounts systematically go dormant annually. When accounts sit inactive beyond strict statutory periods, regulatory guidelines mandate asset forfeiture through escheatment. DustVault insulates administrators completely from expensive auditing, monitoring, and administrative overhead.
+            Millions of FSA, HRA, and specialized healthcare spending accounts systematically go dormant annually. When accounts sit inactive beyond strict statutory periods, strict state regulatory guidelines mandate asset forfeiture through escheatment. DustVault insulates administrators completely from expensive auditing, monitoring, and administrative overhead.
         </p>
-    </section>
-
-    <section id="simulator" class="section" style="border-top: 1px solid var(--border-color);">
-        <h2 class="section-title">Live <span>Impact & Allocation Simulator</span></h2>
-        
-        <div class="interactive-panel">
-            <div class="slider-group">
-                <label>Estimated Total Dormant Portfolio Size: <span id="portfolioVal">$10,000,000</span></label>
-                <input type="range" min="1000000" max="100000000" step="1000000" value="10000000" class="custom-slider" id="portfolioSlider" oninput="calculateImpact()">
-            </div>
-
-            <div class="slider-group">
-                <label>Target Audit Re-Engagement Rate: <span id="rateVal">35%</span></label>
-                <input type="range" min="10" max="75" step="5" value="35" class="custom-slider" id="rateSlider" oninput="calculateImpact()">
-            </div>
-
-            <div class="results-box">
-                <div>
-                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Capital Recovered</div>
-                    <div class="res-num glow" id="capRecovered">$3,500,000</div>
-                </div>
-                <div>
-                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Compliance Overhead Saved</div>
-                    <div class="res-num" id="overheadSaved">$420,000</div>
-                </div>
-                <div>
-                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Veteran Housing Contribution</div>
-                    <div class="res-num glow" style="color: #3fb950;" id="vetContribution">$42,000</div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section id="features" class="section" style="border-top: 1px solid var(--border-color);">
@@ -396,28 +321,32 @@
         </div>
     </section>
 
+    <section id="revenue" class="section">
+        <h2 class="section-title">Pure Performance <span>Pricing Model</span></h2>
+        <div class="rev-panel">
+            <div class="rev-split">
+                <div class="rev-left">
+                    <h3 style="color: var(--text-bright); margin-top:0;">Zero Capital Risk, Absolute Alignment</h3>
+                    <p>DustVault operates exclusively on a contingency-based format. We charge no implementation costs, no software licenses, and no monthly administrative retainers. We only win when you recover unspent structural balances or clear multi-state regulatory fine tracks completely.</p>
+                    <ul style="padding-left: 20px; color: var(--text-main);">
+                        <li style="margin-bottom: 10px;">Complete data setup and processing cost absorbed by DustVault.</li>
+                        <li style="margin-bottom: 10px;">Full access to administrative tracking reporting channels.</li>
+                        <li style="margin-bottom: 10px;">Direct 10% cash pledge to Veteran housing networks built straight into our fee split structure.</li>
+                    </ul>
+                </div>
+                <div class="rev-right">
+                    <div style="font-size: 56px; font-weight: bold; color: var(--text-bright); margin-bottom: 5px;">12%</div>
+                    <div style="color: var(--ice-cyan); font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Flat Contingency Fee</div>
+                    <hr style="border:0; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+                    <p style="font-size: 13px; color: var(--text-main); margin: 0;">Calculated strictly on actual capital successfully recovered or compliance overhead mitigated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 DustVault Technologies LLC. All Rights Reserved. | Veteran-Owned Fintech Ecosystem</p>
     </footer>
 
-    <script>
-        function calculateImpact() {
-            const portfolio = parseFloat(document.getElementById('portfolioSlider').value);
-            const rate = parseFloat(document.getElementById('rateSlider').value) / 100;
-            
-            document.getElementById('portfolioVal').innerText = '$' + portfolio.toLocaleString();
-            document.getElementById('rateVal').innerText = (rate * 100) + '%';
-            
-            const recovered = portfolio * rate;
-            const savings = recovered * 0.12;
-            const veteranAlloc = savings * 0.10;
-            
-            document.getElementById('capRecovered').innerText = '$' + Math.round(recovered).toLocaleString();
-            document.getElementById('overheadSaved').innerText = '$' + Math.round(savings).toLocaleString();
-            document.getElementById('vetContribution').innerText = '$' + Math.round(veteranAlloc).toLocaleString();
-        }
-        // Initialize values on render
-        calculateImpact();
-    </script>
 </body>
 </html>
