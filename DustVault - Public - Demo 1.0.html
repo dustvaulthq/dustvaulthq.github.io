@@ -22,55 +22,75 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
         }
 
-        .demo-window {
-            background-color: var(--dark-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px;
-            max-width: 900px;
-            width: 100%;
-            margin: 20px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        header {
+            background-color: rgba(13, 17, 23, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
             box-sizing: border-box;
         }
 
-        .demo-header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo-title {
+        .logo {
             font-weight: bold;
-            font-size: 26px;
+            font-size: 20px;
             color: var(--text-bright);
             letter-spacing: 1px;
-            margin: 0 0 10px 0;
+            text-decoration: none;
         }
 
-        .logo-title span {
+        .logo span {
             color: var(--ice-cyan);
         }
 
-        .subtitle {
-            color: var(--text-main);
-            font-size: 14px;
-            margin: 0;
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        .panel {
+            background-color: var(--dark-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .panel-title {
+            font-size: 20px;
+            color: var(--text-bright);
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .btn {
             background-color: transparent;
             color: var(--ice-cyan);
             border: 2px solid var(--ice-cyan);
-            padding: 12px 30px;
-            font-size: 16px;
+            padding: 10px 24px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
@@ -92,10 +112,11 @@
             font-family: "Courier New", Courier, monospace;
             font-size: 13px;
             color: #58a6ff;
-            height: 160px;
+            height: 180px;
             overflow-y: auto;
             margin-bottom: 25px;
             border: 1px solid #21262d;
+            line-height: 1.5;
         }
 
         .progress-bar-container {
@@ -120,7 +141,6 @@
             border-collapse: collapse;
             font-size: 14px;
             text-align: left;
-            margin-bottom: 30px;
         }
 
         .demo-table th {
@@ -135,7 +155,7 @@
         }
 
         .status-badge {
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
@@ -144,6 +164,22 @@
         .status-waiting { background-color: #382402; color: #e3b341; }
         .status-active { background-color: #1f2421; color: #3fb950; }
 
+        .scope-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scope-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .scope-list li strong { color: var(--text-bright); }
+
         .impact-banner {
             background: linear-gradient(90deg, #1f1b2c 0%, #0d1117 100%);
             border-left: 4px solid var(--ice-cyan);
@@ -151,115 +187,137 @@
             border-radius: 0 8px 8px 0;
             text-align: left;
             font-size: 13px;
+            margin-top: 30px;
+            grid-column: 1 / -1;
         }
     </style>
 </head>
 <body>
 
-<div class="demo-window">
-    <div class="demo-header">
-        <h1 class="logo-title">DUST<span>VAULT</span> SYSTEM INTERFACE</h1>
-        <p class="subtitle">Secure Institutional B2B Asset Analysis Workflow Node v1.0.4</p>
-    </div>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">DUST<span>VAULT</span></a>
+            <a href="index.html" style="color: var(--text-main); text-decoration: none; font-size: 14px;">&larr; Back to Corporate Homepage</a>
+        </div>
+    </header>
 
-    <div style="margin-bottom: 25px; text-align: center;">
-        <button class="btn" id="runScanBtn" onclick="startSandboxScan()">Execute AI Core Sandbox Scan</button>
-    </div>
-
-    <div class="progress-bar-container" id="progressContainer">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <div class="demo-terminal" id="terminalLog">
-        [SYSTEM STATUS]: Core Engine Standing By. Ready to ingest pilot datasets...
-    </div>
-
-    <table class="demo-table">
-        <thead>
-            <tr>
-                <th>Batch Identifier</th>
-                <th>Account Portfolio Type</th>
-                <th>Identified Balance Volume</th>
-                <th>Compliance Evaluation Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>#DV-FSA-0922</td>
-                <td>Healthcare Flexible Spending Account</td>
-                <td>$142,450.00</td>
-                <td><span class="status-badge status-waiting" id="row1-status">Standing By</span></td>
-            </tr>
-            <tr>
-                <td>#DV-HRA-1104</td>
-                <td>Health Reimbursement Arrangement</td>
-                <td>$289,100.00</td>
-                <td><span class="status-badge status-waiting" id="row2-status">Standing By</span></td>
-            </tr>
-            <tr>
-                <td>#DV-MA-4481</td>
-                <td>Medicare Advantage Flex Layer</td>
-                <td>$87,650.00</td>
-                <td><span class="status-badge status-waiting" id="row3-status">Standing By</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="impact-banner">
-        <strong style="color: var(--text-bright); display: block; margin-bottom: 5px;">🎖️ Purpose-Driven Operational Impact</strong>
-        DustVault is a proud, veteran-owned fintech enterprise. 10% of our top-line contractual recovery fees go directly toward supporting and establishing stable housing networks for homeless U.S. Veterans. We combine elite business value with mission-focused human results.
-    </div>
-</div>
-
-<script>
-    function startSandboxScan() {
-        const btn = document.getElementById('runScanBtn');
-        const term = document.getElementById('terminalLog');
-        const pBox = document.getElementById('progressContainer');
-        const pBar = document.getElementById('progressBar');
+    <div class="container">
         
-        btn.disabled = true;
-        btn.innerText = "Processing Sandbox File Run...";
-        pBox.style.display = "block";
-        pBar.style.width = "0%";
-        
-        term.innerHTML = "[INITIATING]: Accessing secure sandbox framework folder...<br>";
-        
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += 2;
-            pBar.style.width = progress + "%";
+        <div class="panel">
+            <div class="panel-title">
+                <span>Interactive Analysis Node Simulator</span>
+                <button class="btn" id="runScanBtn" onclick="startSandboxScan()" style="padding: 6px 16px; font-size: 13px;">Execute AI Core Scan</button>
+            </div>
+
+            <div class="progress-bar-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="demo-terminal" id="terminalLog">
+                [SYSTEM STATUS]: Recovery core initialized. Awaiting secure pilot dataset link ingestion...
+            </div>
+
+            <table class="demo-table">
+                <thead>
+                    <tr>
+                        <th>Batch Unit</th>
+                        <th>Portfolio Target Category</th>
+                        <th>Volume</th>
+                        <th>Compliance Audit Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#DV-FSA-0922</td>
+                        <td>Healthcare Flexible Spending Account</td>
+                        <td>$142,450.00</td>
+                        <td><span class="status-badge status-waiting" id="row1-status">Awaiting Triggers</span></td>
+                    </tr>
+                    <tr>
+                        <td>#DV-HRA-1104</td>
+                        <td>Health Reimbursement Arrangement</td>
+                        <td>$289,100.00</td>
+                        <td><span class="status-badge status-waiting" id="row2-status">Awaiting Triggers</span></td>
+                    </tr>
+                    <tr>
+                        <td>#DV-MA-4481</td>
+                        <td>Medicare Advantage Flex Layer</td>
+                        <td>$87,650.00</td>
+                        <td><span class="status-badge status-waiting" id="row3-status">Awaiting Triggers</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">WEX Pilot Framework</div>
+            <ul class="scope-list">
+                <li><span>Account Target Subset:</span> <strong>FSA / HRA / MA</strong></li>
+                <li><span>Minimum File Load:</span> <strong>500 Masked Portfolios</strong></li>
+                <li><span>Active Testing Span:</span> <strong>30 Days Continuous</strong></li>
+                <li><span>PII Exposure Mitigation:</span> <strong>100% Full Masking</strong></li>
+                <li><span>Upfront Capital Outlay:</span> <strong>$0.00 (Pure Contingency)</strong></li>
+                <li><span>Target Allocation Fee:</span> <strong>12% Extracted Share</strong></li>
+            </ul>
+        </div>
+
+        <div class="impact-banner">
+            <strong style="color: var(--text-bright); display: block; margin-bottom: 5px;">🎖️ Strategic Corporate Responsibility Alignment</strong>
+            DustVault Technologies guarantees that 10% of our downstream operational recovery metrics are wired straight into secure non-profit allocations focused exclusively on building safe housing networks and providing job training frameworks for unhoused American Veterans.
+        </div>
+
+    </div>
+
+    <script>
+        function startSandboxScan() {
+            const btn = document.getElementById('runScanBtn');
+            const term = document.getElementById('terminalLog');
+            const pBox = document.getElementById('progressContainer');
+            const pBar = document.getElementById('progressBar');
             
-            if(progress === 20) {
-                term.innerHTML += "[INGESTION COMPLETE]: Ingested 3 parallel platform trial records.<br>";
-                term.scrollTop = term.scrollHeight;
-            }
-            if(progress === 45) {
-                term.innerHTML += "[PARSING DATA]: Checking state escheatment maps vs balance inactivity calendars...<br>";
-                document.getElementById('row1-status').className = "status-badge status-active";
-                document.getElementById('row1-status').innerText = "Account Cleared";
-                term.scrollTop = term.scrollHeight;
-            }
-            if(progress === 70) {
-                term.innerHTML += "[OUTREACH PIPELINE GENERATED]: Resolving compliance profiles...<br>";
-                document.getElementById('row2-status').className = "status-badge status-active";
-                document.getElementById('row2-status').innerText = "Account Cleared";
-                term.scrollTop = term.scrollHeight;
-            }
-            if(progress === 90) {
-                document.getElementById('row3-status').className = "status-badge status-active";
-                document.getElementById('row3-status').innerText = "Account Cleared";
-            }
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+            pBox.style.display = "block";
+            pBar.style.width = "0%";
             
-            if(progress >= 100) {
-                clearInterval(interval);
-                term.innerHTML += "[SUCCESS]: System scan complete. 100% of pipeline assets evaluated. Zero tracking defects logged.<br>";
-                term.scrollTop = term.scrollHeight;
-                btn.disabled = false;
-                btn.innerText = "Re-run AI Core Sandbox Scan";
-            }
-        }, 80);
-    }
-</script>
+            term.innerHTML = "[INITIALIZATION SEQUENCE STARTED]: Syncing to masked trial environment accounts...<br>";
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                pBar.style.width = progress + "%";
+                
+                if(progress === 18) {
+                    term.innerHTML += "[DATA INGESTION SECURE]: Loaded file structures successfully. Hashing entries...<br>";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 44) {
+                    term.innerHTML += "[PARSING METRICS]: Cross-checking dormancy records against 50 state escheatment frameworks...<br>";
+                    document.getElementById('row1-status').className = "status-badge status-active";
+                    document.getElementById('row1-status').innerText = "Audit Completed";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 72) {
+                    term.innerHTML += "[OUTREACH CONFIGURATION]: Simulating safe consumer contact triggers...<br>";
+                    document.getElementById('row2-status').className = "status-badge status-active";
+                    document.getElementById('row2-status').innerText = "Audit Completed";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 92) {
+                    document.getElementById('row3-status').className = "status-badge status-active";
+                    document.getElementById('row3-status').innerText = "Audit Completed";
+                }
+                
+                if(progress >= 100) {
+                    clearInterval(interval);
+                    term.innerHTML += "<br>[SUCCESS LOGGED]: Analysis complete. All compliance risks mapped. Capital extraction pathways identified.";
+                    term.scrollTop = term.scrollHeight;
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                    btn.innerText = "Re-execute AI Core Scan";
+                }
+            }, 70);
+        }
+    </script>
 </body>
 </html>
