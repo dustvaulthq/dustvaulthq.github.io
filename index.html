@@ -402,4 +402,185 @@
 
             <div class="results-box">
                 <div>
-                    <div style="font-size: 13px;
+                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px; color: var(--text-main);">Capital Recovered</div>
+                    <div class="res-num glow" id="capRecovered">$3,500,000</div>
+                </div>
+                <div>
+                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px; color: var(--text-main);">Compliance Overhead Saved</div>
+                    <div class="res-num" id="overheadSaved">$420,000</div>
+                </div>
+                <div>
+                    <div style="font-size: 13px; text-transform: uppercase; margin-bottom: 5px; color: var(--text-main);">Veteran Housing Contribution</div>
+                    <div class="res-num glow" style="color: #3fb950;" id="vetContribution">$42,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sandbox" class="section" style="border-top: 1px solid var(--border-color);">
+        <h2 class="section-title">Interactive <span>Analysis Node Sandbox</span></h2>
+        <div class="card" style="max-width: 900px; margin: 0 auto; background-color: var(--dark-card);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                <span style="font-weight: bold; color: var(--text-bright);">Mock Deployment Environment Console</span>
+                <button class="btn" id="runScanBtn" onclick="startSandboxScan()" style="padding: 6px 16px; font-size: 13px;">Execute AI Core Scan</button>
+            </div>
+
+            <div class="progress-bar-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="demo-terminal" id="terminalLog">
+                [SYSTEM STATUS]: Recovery node online. Awaiting data allocation layout ingestion metrics...
+            </div>
+
+            <table class="demo-table">
+                <thead>
+                    <tr>
+                        <th>Batch Unit</th>
+                        <th>Target Framework Category</th>
+                        <th>Volume</th>
+                        <th>Compliance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#DV-FSA-0922</td>
+                        <td>Healthcare Flexible Spending Account</td>
+                        <td>$142,450.00</td>
+                        <td><span class="status-badge status-waiting" id="row1-status">Awaiting Triggers</span></td>
+                    </tr>
+                    <tr>
+                        <td>#DV-HRA-1104</td>
+                        <td>Health Reimbursement Arrangement</td>
+                        <td>$289,100.00</td>
+                        <td><span class="status-badge status-waiting" id="row2-status">Awaiting Triggers</span></td>
+                    </tr>
+                    <tr>
+                        <td>#DV-MA-4481</td>
+                        <td>Medicare Advantage Flex Layer</td>
+                        <td>$87,650.00</td>
+                        <td><span class="status-badge status-waiting" id="row3-status">Awaiting Triggers</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="features" class="section" style="border-top: 1px solid var(--border-color);">
+        <h2 class="section-title">Institutional <span>Capabilities</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Automated Dormancy Discovery</h3>
+                <p>Advanced data parsing models review historical card frameworks systematically to flag dormant balances across medical, payroll, and spending account layers.</p>
+            </div>
+            <div class="card">
+                <h3>Escheatment Risk Mapping</h3>
+                <p>Cross-references state-by-state holding timelines automatically to protect asset profiles before they meet statutory forfeiture thresholds.</p>
+            </div>
+            <div class="card">
+                <h3>Strategic Micro-Outreach</h3>
+                <p>Deploys localized re-engagement funnels optimized to trigger consumer spend-down sequences, safeguarding continuous operational layout integrity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pipeline" class="section" style="background-color: var(--dark-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <h2 class="section-title">4-Phase <span>Operational Integration Pipeline</span></h2>
+        <div class="grid">
+            <div class="card" style="background-color: var(--steel-black);">
+                <h4>Phase 1: Secure Data Ingestion</h4>
+                <p>Anonymized layout transfers (CSV/SFTP) locking target parameters, metrics, and structural timelines with absolute data isolation rules.</p>
+            </div>
+            <div class="card" style="background-color: var(--steel-black);">
+                <h4>Phase 2: AI Core Auditing</h4>
+                <p>Automated validation sweeps processing account sets, verifying active balance boundaries, and generating cross-jurisdictional risk tracking logs.</p>
+            </div>
+            <div class="card" style="background-color: var(--steel-black);">
+                <h4>Phase 3: Targeted Mitigation</h4>
+                <p>Strategic automated micro-communications driving prompt recovery patterns and reducing tracking footprint lines directly.</p>
+            </div>
+            <div class="card" style="background-color: var(--steel-black);">
+                <h4>Phase 4: Analytics Briefing</h4>
+                <p>Clean operational status reporting combined with audit-ready programmatic filings mapping remaining resolved parameters perfectly.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DustVault Technologies LLC. All Rights Reserved. | Veteran-Owned Fintech Ecosystem</p>
+    </footer>
+
+    <script>
+        // Slider engine calculations
+        function calculateImpact() {
+            const portfolio = parseFloat(document.getElementById('portfolioSlider').value);
+            const rate = parseFloat(document.getElementById('rateSlider').value) / 100;
+            
+            document.getElementById('portfolioVal').innerText = '$' + portfolio.toLocaleString();
+            document.getElementById('rateVal').innerText = (rate * 100) + '%';
+            
+            const recovered = portfolio * rate;
+            const savings = recovered * 0.12;
+            const veteranAlloc = savings * 0.10;
+            
+            document.getElementById('capRecovered').innerText = '$' + Math.round(recovered).toLocaleString();
+            document.getElementById('overheadSaved').innerText = '$' + Math.round(savings).toLocaleString();
+            document.getElementById('vetContribution').innerText = '$' + Math.round(veteranAlloc).toLocaleString();
+        }
+
+        // Terminal scan dashboard sequence script 
+        function startSandboxScan() {
+            const btn = document.getElementById('runScanBtn');
+            const term = document.getElementById('terminalLog');
+            const pBox = document.getElementById('progressContainer');
+            const pBar = document.getElementById('progressBar');
+            
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+            pBox.style.display = "block";
+            pBar.style.width = "0%";
+            
+            term.innerHTML = "[INITIALIZATION SEQUENCE STARTED]: Establishing links to masked system metrics...<br>";
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                pBar.style.width = progress + "%";
+                
+                if(progress === 18) {
+                    term.innerHTML += "[DATA INGESTION SECURE]: Verified active pilot file records structure...<br>";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 44) {
+                    term.innerHTML += "[PARSING METRICS]: Evaluating timelines against 50 state escheatment rules...<br>";
+                    document.getElementById('row1-status').className = "status-badge status-active";
+                    document.getElementById('row1-status').innerText = "Audit Completed";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 72) {
+                    term.innerHTML += "[RE-ENGAGEMENT MATCH]: Calibrating localized micro-outreach arrays...<br>";
+                    document.getElementById('row2-status').className = "status-badge status-active";
+                    document.getElementById('row2-status').innerText = "Audit Completed";
+                    term.scrollTop = term.scrollHeight;
+                }
+                if(progress === 92) {
+                    document.getElementById('row3-status').className = "status-badge status-active";
+                    document.getElementById('row3-status').innerText = "Audit Completed";
+                }
+                
+                if(progress >= 100) {
+                    clearInterval(interval);
+                    term.innerHTML += "<br>[SCAN SUCCESSFUL]: Process complete. Compliance parameters cataloged. Asset extraction paths verified.";
+                    term.scrollTop = term.scrollHeight;
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                    btn.innerText = "Re-execute AI Core Scan";
+                }
+            }, 60);
+        }
+
+        // Run calculations on initial screen parse 
+        calculateImpact();
+    </script>
+</body>
+</html>
