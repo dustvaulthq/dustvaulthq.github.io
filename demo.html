@@ -169,7 +169,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
 <!-- MISSION -->
 <div class="mission-strip">
   <div class="mission-text">
-    🇺🇸 &nbsp;<strong>Mission-Locked:</strong> 10% of every dollar DustVault earns goes directly to housing and supporting homeless U.S. Veterans — written into our operating agreement.
+    🇺🇸 &nbsp;<strong>Mission-Locked:</strong> 10% of every dollar DustVault earns goes directly to housing and supporting homeless U.S. Veterans — a standing commitment of the business.
   </div>
 </div>
 
@@ -321,7 +321,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
             <span class="proj-val cyan" id="p-fee">$20,467</span>
           </div>
           <div class="proj-row">
-            <span class="proj-label">Escheatment eliminated</span>
+            <span class="proj-label">Remaining at risk</span>
             <span class="proj-val red" id="p-esc">$316,758</span>
           </div>
           <div class="proj-row">
@@ -344,7 +344,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
         <div class="vet-row"><span class="vet-label">10% veteran contribution</span><span class="vet-val" id="m-contrib">$2,047</span></div>
         <div class="vet-row"><span class="vet-label">Founder</span><span class="vet-val">Navy FMF Corpsman</span></div>
         <div class="vet-row"><span class="vet-label">Model</span><span class="vet-val">Pure revenue-share</span></div>
-        <div class="vet-note"><strong>Not a marketing line.</strong> Written into our operating agreement. Every dollar recovered for our partners funds the veterans who served — and those without shelter today.</div>
+        <div class="vet-note"><strong>Not a marketing line.</strong> A standing commitment of the business. Every dollar recovered for our partners funds the veterans who served — and those without shelter today.</div>
       </div>
 
       <!-- CONTROL GROUP -->
@@ -376,7 +376,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
 </div>
 
 <div class="footer">
-  <div class="footer-l">DustVault Technologies LLC &nbsp;|&nbsp; Veteran-Owned &nbsp;|&nbsp; dustvaulthq@gmail.com &nbsp;|&nbsp; (640) 837-2202</div>
+  <div class="footer-l">DustVault Technologies &nbsp;|&nbsp; Veteran-Owned &nbsp;|&nbsp; dustvaulthq@gmail.com &nbsp;|&nbsp; (640) 837-2202</div>
   <div class="footer-c">🎖 10% of ALL Revenue → U.S. Veterans &amp; Homeless 🇺🇸</div>
   <div class="footer-r">dustvaulthq.github.io &nbsp;|&nbsp; linktr.ee/dustvaulthq</div>
 </div>
@@ -497,8 +497,8 @@ function startScan(){
   addLog('DustVault AI engine initializing...','info');
   let p=0;
   const phases=[
-    {bar:'pb1',status:'ps1',start:0,end:25,logs:['Ingesting masked account ledger...','PII isolation layer — ACTIVE','21,500 account records loaded']},
-    {bar:'pb2',status:'ps2',start:25,end:55,logs:['Cross-referencing all 50 state dormancy laws...','Checking last activity dates...','3,847 accounts flagged as at-risk']},
+    {bar:'pb1',status:'ps1',start:0,end:25,logs:['Ingesting masked account ledger...','PII isolation layer — ACTIVE','21,500 sample account records loaded (illustrative data)']},
+    {bar:'pb2',status:'ps2',start:25,end:55,logs:['Cross-referencing all 50 state dormancy laws...','Checking last activity dates...','3,847 sample accounts flagged as at-risk']},
     {bar:'pb3',status:'ps3',start:55,end:80,logs:['Ranking by balance and days to deadline...','Priority queue built — 4 CRITICAL, 3 HIGH, 1 MED','Outreach sequences staged and ready']},
     {bar:'pb4',status:'ps4',start:80,end:100,logs:['Preparing escheatment filing packages...','All 50 state rules applied...','Compliance documentation complete']},
   ];
@@ -522,7 +522,7 @@ function startScan(){
     if(p===60){document.getElementById('k2').textContent='3,847';document.getElementById('k3').textContent='$487,320';scanDone=true;updateProj();}
     if(p>=100){
       clearInterval(iv);
-      addLog('✓ Scan complete — 3,847 accounts flagged, $487,320 recoverable','ok');
+      addLog('✓ Scan complete — 3,847 sample accounts flagged, $487,320 recoverable (illustrative)','ok');
       btn.textContent='✓ Scan Complete';
       btn.style.background='#00c853';
     }
