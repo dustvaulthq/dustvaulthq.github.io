@@ -460,6 +460,7 @@ function setTab(n){
   });
   document.getElementById('stage-detail').innerHTML=stageDetails[n-1];
 }
+let scanDone=true; // demo opens in the "scanned" state; Reset clears it
 function updateProj(){
   const r=parseInt(document.getElementById('eng-slider').value)/100;
   const total=487320;
@@ -476,7 +477,7 @@ function updateProj(){
   document.getElementById('m-fee').textContent='$'+fee.toLocaleString();
   document.getElementById('m-contrib').textContent='$'+vet.toLocaleString();
   document.getElementById('m-total').textContent='$'+vet.toLocaleString();
-  document.getElementById('k5').textContent='$'+vet.toLocaleString();
+  if(scanDone)document.getElementById('k5').textContent='$'+vet.toLocaleString();
 }
 function addLog(msg,type='info'){
   const log=document.getElementById('scan-log');
@@ -518,7 +519,7 @@ function startScan(){
       }
     });
     if(p===40){document.getElementById('k1').textContent='21,500';}
-    if(p===60){document.getElementById('k2').textContent='3,847';document.getElementById('k3').textContent='$487,320';}
+    if(p===60){document.getElementById('k2').textContent='3,847';document.getElementById('k3').textContent='$487,320';scanDone=true;updateProj();}
     if(p>=100){
       clearInterval(iv);
       addLog('✓ Scan complete — 3,847 accounts flagged, $487,320 recoverable','ok');
@@ -551,6 +552,8 @@ function resetAll(){
   document.getElementById('k2').textContent='0';
   document.getElementById('k3').textContent='$0';
   document.getElementById('k4').textContent='0';
+  scanDone=false;
+  document.getElementById('k5').textContent='$0';
   buildTable();
 }
 buildTable();
