@@ -169,16 +169,16 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
 <!-- MISSION -->
 <div class="mission-strip">
   <div class="mission-text">
-    🇺🇸 &nbsp;<strong>Mission-Locked:</strong> 10% of every dollar DustVault earns goes directly to housing and supporting homeless U.S. Veterans — a standing commitment of the business.
+    🇺🇸 &nbsp;<strong>Every recovery funds a mission:</strong> 10% of every dollar DustVault earns goes directly to housing and supporting homeless U.S. Veterans. When your company partners with us, you recover money for your members — <strong>and take care of the people who served.</strong>
   </div>
 </div>
 
 <!-- PILOT HEADER -->
 <div class="pilot-header">
   <div>
-    <div class="pilot-title">Enterprise Pilot Dashboard</div>
-    <div class="pilot-sub">Enterprise Benefit Administrator — Dormant Balance Recovery</div>
-    <div class="pilot-meta">FSA · HRA · HSA · Prepaid &nbsp;|&nbsp; All 50 States &nbsp;|&nbsp; Illustrative Pilot Data &nbsp;|&nbsp; Account IDs Anonymized</div>
+    <div class="pilot-title">Live Platform Demo — Illustrative Data</div>
+    <div class="pilot-sub">See Exactly What DustVault Does With Your Portfolio</div>
+    <div class="pilot-meta">FSA · HRA · HSA · Prepaid &nbsp;|&nbsp; All 50 States &nbsp;|&nbsp; Sample Data Only — Not Real Accounts &nbsp;|&nbsp; Account IDs Anonymized</div>
   </div>
   <div class="pilot-actions">
     <button class="btn-outline" onclick="resetAll()">↺ Reset</button>
@@ -256,7 +256,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
     <div class="stage-tab" id="tab4" onclick="setTab(4)">📋 04 — Comply</div>
   </div>
   <div class="stage-detail" id="stage-detail">
-    <strong>Stage 1 — Identify:</strong> DustVault ingests your account data and cross-references every account against all 50 state dormancy laws simultaneously. Last transaction date, balance, account type, and state deadline — checked automatically. Every at-risk account surfaces within 48 hours. No manual review. No spreadsheets. No guessing.
+    <strong>Stage 1 — Identify:</strong> Send us your anonymized account ledger — no SSNs, no PII required. DustVault cross-references every account against all 50 state dormancy deadlines simultaneously: balance, account type, last transaction date, days remaining. Every at-risk account surfaces within 48 hours. No spreadsheets. No manual review. No guessing. <strong style="color:#00d4ff">Your compliance team gets the work done in 2 days that used to take weeks.</strong>
   </div>
 
   <!-- MAIN GRID -->
@@ -344,7 +344,7 @@ input[type=range]{width:100%;accent-color:#00d4ff;cursor:pointer}
         <div class="vet-row"><span class="vet-label">10% veteran contribution</span><span class="vet-val" id="m-contrib">$2,047</span></div>
         <div class="vet-row"><span class="vet-label">Founder</span><span class="vet-val">Navy FMF Corpsman</span></div>
         <div class="vet-row"><span class="vet-label">Model</span><span class="vet-val">Pure revenue-share</span></div>
-        <div class="vet-note"><strong>Not a marketing line.</strong> A standing commitment of the business. Every dollar recovered for our partners funds the veterans who served — and those without shelter today.</div>
+        <div class="vet-note"><strong>Not a marketing line. Not a footnote.</strong> When your company partners with DustVault, every recovery directly contributes to housing homeless U.S. Veterans. Your members get their money back. Your company supports a cause that matters. That's the deal — and it costs you nothing extra.</div>
       </div>
 
       <!-- CONTROL GROUP -->
@@ -393,10 +393,10 @@ const accounts=[
   {id:"DV-HRA-01055",type:"HRA",bal:445,last:"Feb 14, 2026",state:"FL",days:110,risk:"low"},
 ];
 const stageDetails=[
-  "<strong>Stage 1 — Identify:</strong> DustVault ingests your account data and cross-references every account against all 50 state dormancy laws simultaneously. Last transaction date, balance, account type, and state deadline — checked automatically. Every at-risk account surfaces within 48 hours. No manual review. No spreadsheets. No guessing.",
-  "<strong>Stage 2 — Prioritize:</strong> Every flagged account scored by (1) balance size, (2) days remaining before escheatment, and (3) account type risk profile. High-risk accounts with tight deadlines and large balances hit the top of the queue. Your compliance team sees what matters most — not a dump of thousands of unsorted records.",
-  "<strong>Stage 3 — Re-Engage:</strong> DustVault fires a personalized outreach sequence automatically — email first with the member's exact balance, eligible spend categories, and specific deadline. SMS follow-up if no action within 48 hours. Specific, urgent, and personal — not a generic reminder. Zero human involvement. Zero cost until balances are recovered.",
-  "<strong>Stage 4 — Comply:</strong> For accounts crossing the dormancy threshold without re-engagement, DustVault prepares complete state-specific escheatment filing documentation — exemptions, partial remittance calculations, due diligence notices — across all 50 states. Your team reviews and submits. We do the heavy lifting."
+  "<strong>Stage 1 — Identify:</strong> Send us your anonymized account ledger — no SSNs, no PII required. DustVault cross-references every account against all 50 state dormancy deadlines simultaneously: balance, account type, last transaction date, days remaining. Every at-risk account surfaces within 48 hours. No spreadsheets. No manual review. No guessing. <strong style='color:#00d4ff'>Your compliance team gets done in 2 days what used to take weeks.</strong>",
+  "<strong>Stage 2 — Prioritize:</strong> Not all dormant accounts are equal. DustVault scores every flagged account by balance size, days remaining before the state deadline, and account type risk profile — so your team sees what demands action today, not a dump of thousands of unsorted records. <strong style='color:#00d4ff'>The highest-value, most urgent accounts rise to the top automatically.</strong>",
+  "<strong>Stage 3 — Re-Engage:</strong> Before a dollar is lost, DustVault sends the member a personalized message: their exact balance, what they can spend it on, and the specific date it expires. Email first. SMS follow-up if no action in 48 hours. Not a generic blast — a real, specific wake-up call. <strong style='color:#00d4ff'>Your members keep money they earned. Veterans and military families, who often miss these windows during deployment, are a priority.</strong>",
+  "<strong>Stage 4 — Comply:</strong> For accounts that cross the threshold, DustVault prepares a complete, state-specific escheatment filing package — exemptions, partial remittance calculations, due diligence notices, all 50 states. Your legal team reviews and submits. <strong style='color:#00d4ff'>We hand you an audit-ready package your attorneys can actually sign off on.</strong> We do the work. You take the credit."
 ];
 let triggered={},currentFilter='all';
 function getRiskClass(r,d){
