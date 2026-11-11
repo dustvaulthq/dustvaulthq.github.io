@@ -503,6 +503,8 @@
 
   <!-- HERO -->
   <header class="hero">
+    <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.55;"></canvas>
+    <div style="position:relative;z-index:1;width:100%;">
     <div class="mission-badge">
       <i class="fa-solid fa-ribbon"></i>
       Veteran-Owned &amp; Purpose-Built — 10% of Every Dollar Funds Homeless Veterans
@@ -518,6 +520,7 @@
         <i class="fa-solid fa-circle-play"></i> View Live Platform Demo
       </a>
     </div>
+    </div><!-- /z-index wrapper -->
   </header>
 
   <!-- TRUST BAR -->
@@ -775,5 +778,263 @@
     <p class="vet-tag">Veteran-Owned &amp; Purpose-Driven Infrastructure</p>
   </footer>
 
+<style>
+/* ── 3D AURORA BACKGROUND ── */
+body::before {
+  content:'';
+  position:fixed;
+  top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,229,255,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(0,229,255,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(0,180,255,0.03) 0%, transparent 60%);
+  animation: aurora 12s ease-in-out infinite alternate;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes aurora {
+  0%  { transform: translate(0,0) rotate(0deg); }
+  33% { transform: translate(2%,3%) rotate(1deg); }
+  66% { transform: translate(-2%,2%) rotate(-1deg); }
+  100%{ transform: translate(1%,-2%) rotate(.5deg); }
+}
+
+/* ── FLOATING GRID LINES ── */
+.hero::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  pointer-events:none;
+  animation: gridshift 20s linear infinite;
+}
+@keyframes gridshift {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 60px 60px, 60px 60px; }
+}
+
+/* ── 3D CARD TILT ── */
+.feature-card, .compliance-card, .pipeline-step {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.3s;
+  will-change: transform;
+}
+.feature-card:hover {
+  box-shadow: 0 20px 60px rgba(0,229,255,0.12), 0 0 0 1px rgba(0,229,255,0.3);
+}
+
+/* ── PROBLEM STAT 3D POP ── */
+.problem-stat h2 {
+  text-shadow: 0 0 40px rgba(0,229,255,0.6), 0 2px 0 rgba(0,0,0,0.5);
+  animation: statpulse 3s ease-in-out infinite;
+}
+.problem-stat:nth-child(2) h2 { animation-delay:.5s; }
+.problem-stat:nth-child(3) h2 { animation-delay:1s; }
+.problem-stat:nth-child(4) h2 { animation-delay:1.5s; }
+@keyframes statpulse {
+  0%,100% { text-shadow: 0 0 30px rgba(0,229,255,0.5), 0 2px 0 rgba(0,0,0,0.5); }
+  50%      { text-shadow: 0 0 60px rgba(0,229,255,0.9), 0 4px 0 rgba(0,0,0,0.5); }
+}
+
+/* ── HERO H1 3D DEPTH ── */
+.hero h1 {
+  text-shadow: 0 1px 0 #0a2030, 0 2px 0 #081820, 0 3px 0 #061015,
+               0 4px 20px rgba(0,229,255,0.2), 0 0 60px rgba(0,229,255,0.1);
+}
+.hero h1 span {
+  display:inline-block;
+  animation: floathero 4s ease-in-out infinite;
+}
+@keyframes floathero {
+  0%,100% { transform: translateY(0px); text-shadow: 0 0 30px rgba(0,229,255,0.5); }
+  50%      { transform: translateY(-6px); text-shadow: 0 10px 40px rgba(0,229,255,0.8); }
+}
+
+/* ── SECTION LABEL SCAN LINE ── */
+.section-label {
+  position:relative;
+  overflow:hidden;
+}
+.section-label::after {
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg, transparent, rgba(0,229,255,0.4), transparent);
+  animation:scanline 3s ease-in-out infinite;
+}
+@keyframes scanline {
+  0%   { left:-60%; }
+  100% { left:160%; }
+}
+
+/* ── TRUST BAR GLOW ── */
+.trust-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  transition: transform 0.2s ease;
+}
+.trust-item i {
+  filter: drop-shadow(0 0 6px rgba(0,229,255,0.8));
+}
+
+/* ── CTA FRAME GLOW ── */
+.cta-frame {
+  position:relative;
+  overflow:hidden;
+}
+.cta-frame::before {
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+  animation:ctapulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ctapulse {
+  0%,100%{ transform:translate(-50%,-50%) scale(1); opacity:1; }
+  50%    { transform:translate(-50%,-50%) scale(1.3); opacity:0.6; }
+}
+
+/* ── BUTTON SHINE ── */
+.btn-action {
+  position:relative;
+  overflow:hidden;
+}
+.btn-action::after {
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+  animation:btnshine 3s ease-in-out infinite;
+}
+@keyframes btnshine {
+  0%  { left:-60%; }
+  50%,100% { left:160%; }
+}
+
+/* ── FOUNDER BOX GLOW ── */
+.founder-box {
+  position:relative;
+}
+.founder-box::before {
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:4px;
+  background:linear-gradient(135deg,rgba(0,229,255,0.3),transparent 40%,rgba(255,215,0,0.2));
+  z-index:-1;
+  animation:founderglow 5s ease-in-out infinite alternate;
+}
+@keyframes founderglow {
+  0%  { opacity:0.5; }
+  100%{ opacity:1; }
+}
+</style>
+
+<script>
+/* ── NEURAL NETWORK CANVAS ── */
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes=[], animId;
+  const N=70, CONN_DIST=160, PULSE_SPEED=0.4;
+
+  function resize(){
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  function initNodes(){
+    nodes=[];
+    for(let i=0;i<N;i++){
+      nodes.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx:(Math.random()-.5)*PULSE_SPEED, vy:(Math.random()-.5)*PULSE_SPEED,
+        r: Math.random()*2+1,
+        pulse: Math.random()*Math.PI*2
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    nodes.forEach(n=>{
+      n.x+=n.vx; n.y+=n.vy; n.pulse+=0.02;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    });
+    // connections
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<CONN_DIST){
+          const alpha=(1-dist/CONN_DIST)*0.5;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle=`rgba(0,229,255,${alpha})`;
+          ctx.lineWidth=0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    nodes.forEach(n=>{
+      const glow=0.6+Math.sin(n.pulse)*0.4;
+      const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);
+      g.addColorStop(0,`rgba(0,229,255,${glow})`);
+      g.addColorStop(1,'rgba(0,229,255,0)');
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);
+      ctx.fillStyle=g;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(0,229,255,${glow})`;
+      ctx.fill();
+    });
+    animId=requestAnimationFrame(draw);
+  }
+  resize(); initNodes(); draw();
+  window.addEventListener('resize',()=>{ cancelAnimationFrame(animId); resize(); initNodes(); draw(); });
+})();
+
+/* ── 3D CARD TILT ── */
+document.querySelectorAll('.feature-card, .pipeline-step').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(600px) rotateY(${x*16}deg) rotateX(${-y*16}deg) translateZ(10px)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='perspective(600px) rotateY(0deg) rotateX(0deg) translateZ(0px)';
+  });
+});
+
+/* ── SCROLL FADE-IN ── */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.transition='opacity .7s ease, transform .7s ease';
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.feature-card,.pipeline-step,.compliance-card,.problem-stat,.trust-item').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(30px)';
+  observer.observe(el);
+});
+</script>
 </body>
 </html>
